@@ -1,10 +1,24 @@
-# gold-miners-draft
+# Agent-Oriented Programming - Gold Miners Tutorial 
 
-### Task 1 - Hello world
-Print "hello world" at the @start plan of the agent.
+### Task 1 - Print Hello world
+In `miner.asl`, l. 8-12 define the _initial beliefs and goals_ of a miner agent. The miner is initialized as follows:
+- `ready_to_explore`: the agent believes that it is ready to explore the mine for gold;
+- `!start`: the agent has the goal to start.
 
-### Task 2 - Decouple the agent from the environment features
-Currently, the knowledge about the size of the environment is hardcoded in the behavior of the agent. Update the context of the plan @ready_to_move so that the agent takes into consideration its belief (env_size(Width, Height)) about the environment size.   
+Upon initialization, the miner reacts to the creation of initial beliefs and goals. For example, the miner stives to achieve the goal `!start` by executing the `start_plan` (l. 19-21). Update the body of the `start_plan` so that the miner prints "Hello world" upon initialization.
+
+### Task 2 - Agent beliefs for decoupling the agent from its environment
+The miner agent reacts to the creation of the initial belief `ready_to_explore` by executing the `ready_to_explore_plan_1` (l.32-37). Based on the body of the plan, the miner behaves as follows:
+- it computes a random position (X,Y) within the mine environment;
+- it creates the goal `!explore(X,Y)` for exploring the route to (X,Y) while looking for gold.
+
+Currently, the dimension of the mine environment (Width = 21, Height = 21) are hardcoded into the miner's plan. We can decouple the miner's plan from specific environment details with the use of _agent beliefs_ and _variables_. Visit http://localhost:3272/ to inspect which beliefs the agent acquires at run time:
+
+
+Check the syntax of the agent's belief about the environment size (`env_size`) to update:
+- the context of `ready_to_explore_plan_1` so that the plan is only executed when the agent has a belief `env_size(X,Y)`. Now, the plan will be applicable only if the variables X, Y become bound to specific values based on a _ground_ belief (e.g. `env_size(100, 100)`) of the miner's belief base at run time.
+- the body of the plan so that the random position is computed based on the variables X, Y instead of the hardcoded values 21, 21. 
+
 
 ### Task 3 - Enable the agent to react to discovered gold
 Currently, the agent perceives when it has discovered some gold in the environment, but it ignores it. Create a plan so that the agent reacts when it acquires the belief gold(X,Y) by behaving as follows:
