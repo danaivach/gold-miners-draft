@@ -17,15 +17,15 @@ Run with [Gradle 7.4](https://gradle.org/):
 
 For Tasks 1-4:
 ```shell
-./gradlew mas-reactive-proactive
+./gradlew task_a
 ```
 For Task 5:
 ```shell
-./gradlew mas-social-ability
+./gradlew task_b
 ```
 For Task 6: 
 ```shell
-./gradlew mas-multi-agent
+./gradlew task_c
 ```
 
 ## Gold Miners Tutorial
