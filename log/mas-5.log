@@ -1,0 +1,420 @@
+[Cartago] Workspace mining created.
+[Cartago] artifact mine_env: mining.MiningPlanet(1,0) at mining created.
+[miner] join workspace /main/mining: done
+[miner] focusing on artifact mine_env (at workspace /main/mining) using namespace default
+[leader] join workspace /main/mining: done
+[leader] focusing on artifact mine_env (at workspace /main/mining) using namespace default
+[miner] focus on mine_env: done
+[leader] focus on mine_env: done
+[leader] waiting
+[miner] Implement Task 1
+[miner] I will create the goal to explore (3,11)
+[miner] I am at (3,10) which is adjacent to (3,11)
+[miner] I will create the goal to explore (1,2)
+[miner] I am at (1,3) which is adjacent to (1,2)
+[miner] I will create the goal to explore (11,11)
+[leader] waiting
+[miner] I am at (11,10) which is adjacent to (11,11)
+[miner] I will create the goal to explore (6,6)
+[miner] I am at (6,7) which is adjacent to (6,6)
+[miner] I will create the goal to explore (18,11)
+[leader] waiting
+[miner] I am at (18,10) which is adjacent to (18,11)
+[miner] I will create the goal to explore (17,7)
+[miner] I am at (17,8) which is adjacent to (17,7)
+[miner] I will create the goal to explore (7,15)
+[leader] waiting
+[miner] I am at (7,14) which is adjacent to (7,15)
+[miner] I will create the goal to explore (19,13)
+[miner] I am at (18,14) which is adjacent to (19,13)
+[miner] I will create the goal to explore (16,5)
+[leader] waiting
+[miner] I am at (16,6) which is adjacent to (16,5)
+[miner] I will create the goal to explore (4,11)
+[miner] I am at (4,10) which is adjacent to (4,11)
+[miner] I will create the goal to explore (15,13)
+[leader] waiting
+[miner] I am at (15,12) which is adjacent to (15,13)
+[miner] I will create the goal to explore (1,8)
+[miner] I am at (1,9) which is adjacent to (1,8)
+[miner] I will create the goal to explore (10,15)
+[leader] waiting
+[miner] I am at (10,14) which is adjacent to (10,15)
+[miner] I will create the goal to explore (9,0)
+[miner] I am at (9,1) which is adjacent to (9,0)
+[miner] I will create the goal to explore (11,16)
+[leader] waiting
+[miner] Gold perceived: gold(9,3)
+[miner] Dropping near(_,_) desires and intentions to handle gold(9,3)
+[miner] Handling gold(9,3) now.
+[miner] I've reached 9x3
+[miner] Successfully picked gold at (9,3)
+[miner] gold removed
+[miner] gold removed
+[miner] I've reached 0x0
+[WorldModel] Agent 1 carried a gold to depot!
+[miner] current_position(0,0)
+[miner] Successfully dropped
+[miner] Finish handling gold(9,3)
+[miner] I will create the goal to explore (4,12)
+[leader] waiting
+[miner] I am at (4,11) which is adjacent to (4,12)
+[miner] I will create the goal to explore (7,1)
+[miner] I am at (7,2) which is adjacent to (7,1)
+[miner] I will create the goal to explore (4,11)
+[leader] waiting
+[miner] I am at (4,10) which is adjacent to (4,11)
+[miner] I will create the goal to explore (11,9)
+[miner] Gold perceived: gold(11,10)
+[miner] Dropping near(_,_) desires and intentions to handle gold(11,10)
+[miner] Handling gold(11,10) now.
+[miner] I've reached 11x10
+[miner] Successfully picked gold at (11,10)
+[miner] gold removed
+[miner] gold removed
+[leader] waiting
+[miner] I've reached 0x0
+[WorldModel] Agent 1 carried a gold to depot!
+[miner] current_position(0,0)
+[miner] Successfully dropped
+[miner] Finish handling gold(11,10)
+[miner] I will create the goal to explore (4,5)
+[miner] I am at (4,4) which is adjacent to (4,5)
+[miner] I will create the goal to explore (17,1)
+[leader] waiting
+[miner] I am at (17,2) which is adjacent to (17,1)
+[miner] I will create the goal to explore (4,2)
+[miner] I am at (5,2) which is adjacent to (4,2)
+[miner] I will create the goal to explore (9,19)
+[leader] waiting
+[miner] I am at (9,18) which is adjacent to (9,19)
+[miner] I will create the goal to explore (14,5)
+[miner] Gold perceived: gold(11,18)
+[miner] Dropping near(_,_) desires and intentions to handle gold(11,18)
+[miner] Handling gold(11,18) now.
+[miner] I've reached 11x18
+[miner] Successfully picked gold at (11,18)
+[miner] gold removed
+[miner] gold removed
+[leader] waiting
+[miner] I've reached 0x0
+[WorldModel] Agent 1 carried a gold to depot!
+[miner] current_position(0,0)
+[miner] Successfully dropped
+[miner] Finish handling gold(11,18)
+[miner] I will create the goal to explore (4,9)
+[leader] waiting
+[miner] I am at (4,8) which is adjacent to (4,9)
+[miner] I will create the goal to explore (14,7)
+[miner] I am at (13,8) which is adjacent to (14,7)
+[miner] I will create the goal to explore (10,0)
+[leader] waiting
+[miner] I am at (10,1) which is adjacent to (10,0)
+[miner] I will create the goal to explore (5,16)
+[miner] I am at (5,15) which is adjacent to (5,16)
+[miner] I will create the goal to explore (16,13)
+[leader] waiting
+[miner] I am at (16,14) which is adjacent to (16,13)
+[miner] I will create the goal to explore (17,9)
+[miner] I am at (17,10) which is adjacent to (17,9)
+[miner] I will create the goal to explore (9,11)
+[miner] I am at (10,10) which is adjacent to (9,11)
+[miner] I will create the goal to explore (18,11)
+[leader] waiting
+[miner] I am at (17,10) which is adjacent to (18,11)
+[miner] I will create the goal to explore (14,19)
+[miner] Gold perceived: gold(15,17)
+[miner] Dropping near(_,_) desires and intentions to handle gold(15,17)
+[miner] Handling gold(15,17) now.
+[miner] I've reached 15x17
+[miner] Successfully picked gold at (15,17)
+[miner] gold removed
+[miner] gold removed
+[miner] gold removed
+[leader] waiting
+[miner] I've reached 0x0
+[WorldModel] Agent 1 carried a gold to depot!
+[miner] current_position(0,0)
+[miner] Successfully dropped
+[miner] Finish handling gold(15,17)
+[miner] I will create the goal to explore (12,3)
+[leader] waiting
+[miner] I am at (12,2) which is adjacent to (12,3)
+[miner] I will create the goal to explore (9,18)
+[leader] waiting
+[miner] I am at (9,17) which is adjacent to (9,18)
+[miner] I will create the goal to explore (4,3)
+[miner] I am at (4,4) which is adjacent to (4,3)
+[miner] I will create the goal to explore (15,5)
+[leader] waiting
+[miner] I am at (14,4) which is adjacent to (15,5)
+[miner] I will create the goal to explore (1,2)
+[miner] I am at (1,3) which is adjacent to (1,2)
+[miner] I will create the goal to explore (11,7)
+[leader] waiting
+[miner] I am at (11,6) which is adjacent to (11,7)
+[miner] I will create the goal to explore (12,16)
+[miner] I am at (12,15) which is adjacent to (12,16)
+[miner] I will create the goal to explore (15,4)
+[leader] waiting
+[miner] I am at (15,5) which is adjacent to (15,4)
+[miner] I will create the goal to explore (9,1)
+[miner] I am at (9,2) which is adjacent to (9,1)
+[miner] I will create the goal to explore (13,17)
+[leader] waiting
+[miner] I am at (13,16) which is adjacent to (13,17)
+[miner] I will create the goal to explore (5,13)
+[miner] Gold perceived: gold(7,15)
+[miner] Dropping near(_,_) desires and intentions to handle gold(7,15)
+[miner] Handling gold(7,15) now.
+[miner] I've reached 7x15
+[miner] Successfully picked gold at (7,15)
+[miner] gold removed
+[miner] gold removed
+[miner] gold removed
+[leader] waiting
+[miner] I've reached 0x0
+[WorldModel] Agent 1 carried a gold to depot!
+[miner] current_position(0,0)
+[miner] Successfully dropped
+[miner] Finish handling gold(7,15)
+[miner] I will create the goal to explore (3,4)
+[miner] I am at (3,3) which is adjacent to (3,4)
+[miner] I will create the goal to explore (8,4)
+[miner] I am at (7,3) which is adjacent to (8,4)
+[miner] I will create the goal to explore (16,17)
+[leader] waiting
+[miner] I am at (16,16) which is adjacent to (16,17)
+[miner] I will create the goal to explore (8,15)
+[leader] waiting
+[miner] I am at (9,16) which is adjacent to (8,15)
+[miner] I will create the goal to explore (15,0)
+[miner] I am at (15,1) which is adjacent to (15,0)
+[miner] I will create the goal to explore (17,7)
+[leader] waiting
+[miner] I am at (17,6) which is adjacent to (17,7)
+[miner] I will create the goal to explore (18,15)
+[miner] I am at (18,14) which is adjacent to (18,15)
+[miner] I will create the goal to explore (9,7)
+[leader] waiting
+[miner] I am at (9,8) which is adjacent to (9,7)
+[miner] I will create the goal to explore (4,8)
+[miner] I am at (5,8) which is adjacent to (4,8)
+[miner] I will create the goal to explore (16,18)
+[leader] waiting
+[miner] I am at (16,17) which is adjacent to (16,18)
+[miner] I will create the goal to explore (4,16)
+[miner] I am at (5,17) which is adjacent to (4,16)
+[miner] I will create the goal to explore (0,11)
+[miner] I am at (0,12) which is adjacent to (0,11)
+[miner] I will create the goal to explore (18,18)
+[leader] waiting
+[miner] I am at (18,17) which is adjacent to (18,18)
+[miner] I will create the goal to explore (2,13)
+[leader] waiting
+[miner] I am at (2,14) which is adjacent to (2,13)
+[miner] I will create the goal to explore (13,19)
+[leader] waiting
+[miner] I am at (13,18) which is adjacent to (13,19)
+[miner] I will create the goal to explore (1,13)
+[miner] I am at (1,14) which is adjacent to (1,13)
+[miner] I will create the goal to explore (7,7)
+[leader] waiting
+[miner] I am at (7,8) which is adjacent to (7,7)
+[miner] I will create the goal to explore (4,18)
+[miner] I am at (4,17) which is adjacent to (4,18)
+[miner] I will create the goal to explore (8,3)
+[leader] waiting
+[miner] I am at (8,4) which is adjacent to (8,3)
+[miner] I will create the goal to explore (0,9)
+[miner] I am at (0,8) which is adjacent to (0,9)
+[miner] I will create the goal to explore (5,9)
+[leader] waiting
+[miner] I am at (4,8) which is adjacent to (5,9)
+[miner] I will create the goal to explore (16,11)
+[miner] I am at (16,10) which is adjacent to (16,11)
+[miner] I will create the goal to explore (6,16)
+[leader] waiting
+[miner] I am at (6,15) which is adjacent to (6,16)
+[miner] I will create the goal to explore (0,17)
+[miner] I am at (0,16) which is adjacent to (0,17)
+[miner] I will create the goal to explore (16,9)
+[leader] waiting
+[miner] I am at (16,10) which is adjacent to (16,9)
+[miner] I will create the goal to explore (18,15)
+[miner] I am at (18,14) which is adjacent to (18,15)
+[miner] I will create the goal to explore (5,3)
+[leader] waiting
+[miner] I am at (5,4) which is adjacent to (5,3)
+[miner] I will create the goal to explore (15,5)
+[miner] I am at (14,4) which is adjacent to (15,5)
+[miner] I will create the goal to explore (13,0)
+[miner] I am at (13,1) which is adjacent to (13,0)
+[miner] I will create the goal to explore (11,14)
+[leader] waiting
+[miner] I am at (11,13) which is adjacent to (11,14)
+[miner] I will create the goal to explore (14,0)
+[leader] waiting
+[miner] I am at (14,1) which is adjacent to (14,0)
+[miner] I will create the goal to explore (12,6)
+[miner] I am at (12,5) which is adjacent to (12,6)
+[miner] I will create the goal to explore (0,3)
+[miner] I am at (0,4) which is adjacent to (0,3)
+[miner] I will create the goal to explore (12,3)
+[leader] waiting
+[miner] I am at (11,4) which is adjacent to (12,3)
+[miner] I will create the goal to explore (2,7)
+[miner] I am at (2,6) which is adjacent to (2,7)
+[miner] I will create the goal to explore (0,8)
+[miner] I am at (0,7) which is adjacent to (0,8)
+[miner] I will create the goal to explore (10,8)
+[leader] waiting
+[miner] I am at (9,7) which is adjacent to (10,8)
+[miner] I will create the goal to explore (16,19)
+[miner] I am at (16,18) which is adjacent to (16,19)
+[miner] I will create the goal to explore (16,1)
+[leader] waiting
+[miner] I am at (16,2) which is adjacent to (16,1)
+[miner] I will create the goal to explore (17,17)
+[leader] waiting
+[miner] I am at (17,16) which is adjacent to (17,17)
+[miner] I will create the goal to explore (15,12)
+[miner] I am at (15,13) which is adjacent to (15,12)
+[miner] I will create the goal to explore (17,17)
+[miner] I am at (17,16) which is adjacent to (17,17)
+[miner] I will create the goal to explore (9,14)
+[miner] I am at (9,15) which is adjacent to (9,14)
+[miner] I will create the goal to explore (13,5)
+[leader] waiting
+[miner] I am at (13,6) which is adjacent to (13,5)
+[miner] I will create the goal to explore (9,1)
+[miner] I am at (9,2) which is adjacent to (9,1)
+[miner] I will create the goal to explore (7,5)
+[miner] I am at (7,4) which is adjacent to (7,5)
+[miner] I will create the goal to explore (6,2)
+[leader] waiting
+[miner] I am at (6,3) which is adjacent to (6,2)
+[miner] I will create the goal to explore (11,10)
+[miner] I am at (11,9) which is adjacent to (11,10)
+[miner] I will create the goal to explore (6,11)
+[miner] I am at (6,10) which is adjacent to (6,11)
+[miner] I will create the goal to explore (17,10)
+[leader] waiting
+[miner] I am at (16,10) which is adjacent to (17,10)
+[miner] I will create the goal to explore (2,14)
+[miner] I am at (2,13) which is adjacent to (2,14)
+[miner] I will create the goal to explore (8,4)
+[leader] waiting
+[miner] I am at (8,5) which is adjacent to (8,4)
+[miner] I will create the goal to explore (5,12)
+[miner] I am at (5,11) which is adjacent to (5,12)
+[miner] I will create the goal to explore (9,2)
+[leader] waiting
+[miner] I am at (9,3) which is adjacent to (9,2)
+[miner] I will create the goal to explore (1,10)
+[miner] I am at (1,9) which is adjacent to (1,10)
+[miner] I will create the goal to explore (12,0)
+[leader] waiting
+[miner] I am at (12,1) which is adjacent to (12,0)
+[miner] I will create the goal to explore (13,6)
+[miner] I am at (13,5) which is adjacent to (13,6)
+[miner] I will create the goal to explore (16,3)
+[miner] I am at (16,4) which is adjacent to (16,3)
+[miner] I will create the goal to explore (17,10)
+[leader] waiting
+[miner] I am at (17,9) which is adjacent to (17,10)
+[miner] I will create the goal to explore (2,10)
+[miner] I am at (3,9) which is adjacent to (2,10)
+[miner] I will create the goal to explore (16,9)
+[leader] waiting
+[miner] I am at (15,9) which is adjacent to (16,9)
+[miner] I will create the goal to explore (18,13)
+[miner] I am at (18,12) which is adjacent to (18,13)
+[miner] I will create the goal to explore (16,15)
+[miner] I am at (16,14) which is adjacent to (16,15)
+[miner] I will create the goal to explore (10,7)
+[miner] I am at (10,8) which is adjacent to (10,7)
+[leader] waiting
+[miner] I will create the goal to explore (9,8)
+[miner] I am at (10,8) which is adjacent to (9,8)
+[miner] I will create the goal to explore (10,13)
+[miner] I am at (10,12) which is adjacent to (10,13)
+[miner] I will create the goal to explore (19,12)
+[miner] I am at (18,12) which is adjacent to (19,12)
+[miner] I will create the goal to explore (6,17)
+[leader] waiting
+[miner] I am at (6,16) which is adjacent to (6,17)
+[miner] I will create the goal to explore (18,2)
+[leader] waiting
+[miner] I am at (18,3) which is adjacent to (18,2)
+[miner] I will create the goal to explore (16,5)
+[miner] I am at (16,4) which is adjacent to (16,5)
+[miner] I will create the goal to explore (12,15)
+[miner] I am at (12,14) which is adjacent to (12,15)
+[miner] I will create the goal to explore (12,16)
+[miner] I am at (12,15) which is adjacent to (12,16)
+[miner] I will create the goal to explore (10,2)
+[leader] waiting
+[miner] I am at (10,3) which is adjacent to (10,2)
+[miner] I will create the goal to explore (0,14)
+[leader] waiting
+[miner] I am at (0,13) which is adjacent to (0,14)
+[miner] I will create the goal to explore (1,3)
+[miner] I am at (1,4) which is adjacent to (1,3)
+[miner] I will create the goal to explore (9,5)
+[miner] I am at (8,4) which is adjacent to (9,5)
+[miner] I will create the goal to explore (19,1)
+[leader] waiting
+[miner] I am at (19,2) which is adjacent to (19,1)
+[miner] I will create the goal to explore (1,4)
+[leader] waiting
+[miner] I am at (1,3) which is adjacent to (1,4)
+[miner] I will create the goal to explore (2,13)
+[miner] I am at (2,12) which is adjacent to (2,13)
+[miner] I will create the goal to explore (5,0)
+[leader] waiting
+[miner] I am at (5,1) which is adjacent to (5,0)
+[miner] I will create the goal to explore (9,13)
+[miner] I am at (9,12) which is adjacent to (9,13)
+[miner] I will create the goal to explore (11,1)
+[leader] waiting
+[miner] I am at (11,2) which is adjacent to (11,1)
+[miner] I will create the goal to explore (10,5)
+[miner] I am at (10,4) which is adjacent to (10,5)
+[miner] I will create the goal to explore (4,3)
+[miner] I am at (5,4) which is adjacent to (4,3)
+[miner] I will create the goal to explore (5,5)
+[miner] I am at (5,4) which is adjacent to (5,5)
+[miner] I will create the goal to explore (3,12)
+[miner] I am at (3,11) which is adjacent to (3,12)
+[miner] I will create the goal to explore (6,3)
+[leader] waiting
+[miner] I am at (6,4) which is adjacent to (6,3)
+[miner] I will create the goal to explore (18,15)
+[leader] waiting
+[miner] I am at (18,14) which is adjacent to (18,15)
+[miner] I will create the goal to explore (6,17)
+[miner] I am at (6,16) which is adjacent to (6,17)
+[miner] I will create the goal to explore (19,9)
+[leader] waiting
+[miner] I am at (19,10) which is adjacent to (19,9)
+[miner] I will create the goal to explore (19,0)
+[miner] I am at (19,1) which is adjacent to (19,0)
+[miner] I will create the goal to explore (16,19)
+[leader] waiting
+[miner] I am at (16,18) which is adjacent to (16,19)
+[miner] I will create the goal to explore (15,16)
+[miner] I am at (15,17) which is adjacent to (15,16)
+[miner] I will create the goal to explore (15,8)
+[miner] I am at (15,9) which is adjacent to (15,8)
+[miner] I will create the goal to explore (12,13)
+[leader] waiting
+[miner] I am at (12,12) which is adjacent to (12,13)
+[miner] I will create the goal to explore (4,14)
+[miner] I am at (4,13) which is adjacent to (4,14)
+[miner] I will create the goal to explore (6,14)
+[miner] I am at (5,13) which is adjacent to (6,14)
+[miner] I will create the goal to explore (12,5)
+[leader] waiting
+[miner] I am at (12,6) which is adjacent to (12,5)
+[miner] I will create the goal to explore (6,0)

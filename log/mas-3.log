@@ -1,0 +1,48 @@
+[Cartago] Workspace mining created.
+[Cartago] artifact mine_env: mining.MiningPlanet(1,0) at mining created.
+[miner] join workspace /main/mining: done
+[leader] join workspace /main/mining: done
+[miner] focusing on artifact mine_env (at workspace /main/mining) using namespace default
+[leader] focusing on artifact mine_env (at workspace /main/mining) using namespace default
+[miner] focus on mine_env: done
+[leader] focus on mine_env: done
+[leader] waiting
+[miner] Implement Task 1
+[miner] I will create the goal to explore (6,11)
+[miner] I am at (6,10) which is adjacent to (6,11)
+[miner] I will create the goal to explore (8,8)
+[miner] I am at (8,9) which is adjacent to (8,8)
+[miner] I will create the goal to explore (3,18)
+[leader] waiting
+[miner] I am at (3,17) which is adjacent to (3,18)
+[miner] I will create the goal to explore (17,18)
+[miner] I am at (16,17) which is adjacent to (17,18)
+[miner] I will create the goal to explore (18,7)
+[leader] waiting
+[miner] I am at (18,8) which is adjacent to (18,7)
+[miner] I will create the goal to explore (15,19)
+[miner] I am at (15,18) which is adjacent to (15,19)
+[miner] I will create the goal to explore (5,12)
+[leader] waiting
+[miner] I am at (5,13) which is adjacent to (5,12)
+[miner] I will create the goal to explore (1,12)
+[miner] I am at (2,13) which is adjacent to (1,12)
+[miner] I will create the goal to explore (6,8)
+[miner] I am at (6,9) which is adjacent to (6,8)
+[miner] I will create the goal to explore (19,1)
+[leader] waiting
+[miner] I am at (19,2) which is adjacent to (19,1)
+[miner] I will create the goal to explore (10,19)
+[leader] waiting
+[miner] I am at (10,18) which is adjacent to (10,19)
+[miner] I will create the goal to explore (8,9)
+[miner] I am at (8,10) which is adjacent to (8,9)
+[miner] I will create the goal to explore (18,10)
+[leader] waiting
+[miner] I am at (17,10) which is adjacent to (18,10)
+[miner] I will create the goal to explore (13,7)
+[miner] I am at (13,8) which is adjacent to (13,7)
+[miner] I will create the goal to explore (18,17)
+[leader] waiting
+[miner] I am at (18,16) which is adjacent to (18,17)
+[miner] I will create the goal to explore (13,7)

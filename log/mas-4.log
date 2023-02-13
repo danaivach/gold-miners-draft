@@ -1,0 +1,20 @@
+[Cartago] Workspace mining created.
+[Cartago] artifact mine_env: mining.MiningPlanet(1,0) at mining created.
+[miner] join workspace /main/mining: done
+[leader] join workspace /main/mining: done
+[miner] focusing on artifact mine_env (at workspace /main/mining) using namespace default
+[leader] focusing on artifact mine_env (at workspace /main/mining) using namespace default
+[miner] focus on mine_env: done
+[leader] focus on mine_env: done
+[leader] waiting
+[miner] Implement Task 1
+[miner] I will create the goal to explore (19,18)
+[leader] waiting
+[miner] I am at (19,17) which is adjacent to (19,18)
+[miner] I will create the goal to explore (0,4)
+[leader] waiting
+[miner] I am at (0,5) which is adjacent to (0,4)
+[miner] I will create the goal to explore (0,10)
+[miner] I am at (0,9) which is adjacent to (0,10)
+[miner] I will create the goal to explore (13,6)
+[leader] waiting

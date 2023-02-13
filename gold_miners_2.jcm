@@ -1,0 +1,27 @@
+/*
+
+    JaCaMo Project File
+
+    This file defines the initial state of the MAS (initial agents, environment, organisation, ....)
+
+    --
+    Based on initially implementation developed by Rafael Bordini, Jomi Hubner and Maicon Zatelli,
+    and then adapted for courses by Joao Leite (http://centria.di.fct.unl.pt/~jleite/wesaac14/)
+
+*/
+
+mas gold_miners {
+    agent leader : leader.asl {
+        focus: mining.mine_env
+    }
+    agent miner : miner.asl  {
+        focus: mining.mine_env
+    }
+    
+    workspace mining {
+        artifact mine_env: mining.MiningPlanet(1,0)
+    }
+
+    class-path: lib                      // java class path
+}
+

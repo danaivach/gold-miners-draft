@@ -1,0 +1,50 @@
+[Cartago] Workspace mining created.
+[Cartago] artifact mine_env: mining.MiningPlanet(1,0) at mining created.
+[leader] waiting
+[miner] join workspace /main/mining: done
+[miner] focusing on artifact mine_env (at workspace /main/mining) using namespace default
+[miner] focus on mine_env: done
+[miner] Implement Task 1
+[miner] I will create the goal to explore (3,0)
+[miner] I am at (2,0) which is adjacent to (3,0)
+[miner] I will create the goal to explore (2,1)
+[miner] I am at (2,0) which is adjacent to (2,1)
+[miner] I will create the goal to explore (14,1)
+[miner] I am at (13,0) which is adjacent to (14,1)
+[miner] I will create the goal to explore (0,4)
+[CAgentArch] Action failed: move_base, in namespace default, operation ( move_base )
+[leader] No failure event was generated for +!work_on_base[code(move_base),code_line(18),code_src("file:src/agt/leader.asl"),env_failure_reason(env_failure(action_failed(move_base,op(default,"( move_base )")))),error(action_failed),error_msg("Action failed: move_base, in namespace default, operation ( move_base )"),source(self)]
+intention 2: 
+    +!work_on_base[source(self)] <- ... move_base; !work_on_base / {}
+    +!start[source(self)] <- ... !work_on_base / {}
+
+[miner] I am at (0,3) which is adjacent to (0,4)
+[miner] I will create the goal to explore (7,10)
+[miner] I am at (7,9) which is adjacent to (7,10)
+[miner] I will create the goal to explore (9,7)
+[miner] I am at (9,8) which is adjacent to (9,7)
+[miner] I will create the goal to explore (11,14)
+[miner] I am at (11,13) which is adjacent to (11,14)
+[miner] I will create the goal to explore (4,8)
+[miner] I am at (4,9) which is adjacent to (4,8)
+[miner] I will create the goal to explore (19,18)
+[miner] I am at (19,17) which is adjacent to (19,18)
+[miner] I will create the goal to explore (10,7)
+[miner] I am at (10,8) which is adjacent to (10,7)
+[miner] I will create the goal to explore (15,3)
+[miner] I am at (15,4) which is adjacent to (15,3)
+[miner] I will create the goal to explore (2,2)
+[miner] I am at (2,3) which is adjacent to (2,2)
+[miner] I will create the goal to explore (2,3)
+[miner] I am at (2,3) which is adjacent to (2,3)
+[miner] I will create the goal to explore (5,7)
+[miner] I am at (5,6) which is adjacent to (5,7)
+[miner] I will create the goal to explore (17,8)
+[miner] I am at (17,7) which is adjacent to (17,8)
+[miner] I will create the goal to explore (7,2)
+[miner] I am at (7,3) which is adjacent to (7,2)
+[miner] I will create the goal to explore (17,13)
+[miner] I am at (17,12) which is adjacent to (17,13)
+[miner] I will create the goal to explore (0,18)
+[miner] I am at (0,17) which is adjacent to (0,18)
+[miner] I will create the goal to explore (10,10)

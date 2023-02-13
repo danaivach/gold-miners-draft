@@ -1,0 +1,35 @@
+[Cartago] Workspace mining created.
+[Cartago] artifact mine_env: mining.MiningPlanet(1,0) at mining created.
+[miner] join workspace /main/mining: done
+[miner] focusing on artifact mine_env (at workspace /main/mining) using namespace default
+[miner] focus on mine_env: done
+[miner] Implement Task 1
+[miner] I will create the goal to explore (12,5)
+[miner] I am at (12,4) which is adjacent to (12,5)
+[miner] I will create the goal to explore (15,16)
+[miner] I am at (15,15) which is adjacent to (15,16)
+[miner] I will create the goal to explore (19,18)
+[miner] Gold perceived: gold(18,17)
+[miner] Dropping near(_,_) desires and intentions to handle gold(18,17)
+[miner] Handling gold(18,17) now.
+[miner] I've reached 18x17
+[miner] Successfully picked gold at (18,17)
+[miner] gold removed
+[miner] gold removed
+[miner] gold removed
+[miner] I've reached 0x0
+[WorldModel] Agent 1 carried a gold to depot!
+[miner] current_position(0,0)
+[miner] Successfully dropped
+[miner] Finish handling gold(18,17)
+[miner] I will create the goal to explore (14,4)
+[miner] I am at (14,3) which is adjacent to (14,4)
+[miner] I will create the goal to explore (16,4)
+[miner] I am at (15,3) which is adjacent to (16,4)
+[miner] I will create the goal to explore (17,19)
+[miner] I am at (17,18) which is adjacent to (17,19)
+[miner] I will create the goal to explore (4,13)
+[miner] I am at (4,14) which is adjacent to (4,13)
+[miner] I will create the goal to explore (9,14)
+[miner] I am at (8,14) which is adjacent to (9,14)
+[miner] I will create the goal to explore (14,1)
