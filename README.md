@@ -1,8 +1,10 @@
-# Programming your first Agent(s)!
+# Programming Your First Agent(s)!
 
-Recently, rumours about the discovery of gold scattered around deep Carpathian woods made their way into the public. Consequently, hordes of gold miners are pouring into the area in the hope to collect as much of gold nuggets as possible. In this introductory tutorial, your task is to program a team of agents that will collect the gold and deliver it to a depot for safe storage.
+Recently, rumours about the discovery of gold scattered around deep Carpathian woods made their way into the public. Consequently, hordes of gold miners are pouring into the area in the hope to collect as much of gold nuggets as possible. In this introductory tutorial, your task is to program a team of miner agents that will collect the gold and deliver it to a depot for safe storage.
 
-This tutorial is a simplified introductory version of (...) developed by (...). The tutorial already provides the scafold required to implement your team of agents — but only leaves a few details.
+The tutorial already includes most of the code required by your team of miners. It only leaves out a few parts — just enough to give you a guided tour of some of the features of autonomous agents discussed during the lecture.
+
+This tutorial is a simplified version of (...) developed by (...).
 
 ## Table of Contents
 -   [How to run the project](#how-to-run-the-project)
