@@ -1,4 +1,4 @@
-# Programming your first Agent - Gold Miners Tutorial 
+# Programming your first Agent! 
 
 ## Table of Contents
 -   [How to run the project](#how-to-run-the-project)
