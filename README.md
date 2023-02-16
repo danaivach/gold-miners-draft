@@ -65,11 +65,11 @@ The miner agent reacts to the creation of the initial belief `ready_to_explore` 
 - it computes a random position (X,Y) within the mine environment;
 - it creates the goal `!explore(X,Y)` for exploring the route to (X,Y) while looking for gold.
 
-Currently, the dimension of the mine environment (Width = 21, Height = 21) are hardcoded into the miner's plan. We can decouple the miner's plan from specific environment details with the use of _agent beliefs_ and _variables_. Visit http://localhost:3272/ to inspect which beliefs the agent acquires at run time:
+Currently, the dimension of the mine environment (Width = 21, Height = 21) are hardcoded into the miner's plan. We can also use variable to decouple the miner's plan from specific environment details. Visit http://localhost:3272/ to inspect which beliefs the agent acquires at run time:
 
 <img src="media/miner1-beliefs.png?raw=true" width="400">
 
-Check the syntax of the agent's belief about the environment size (`env_size`) to update:
+Check the agent's belief about the environment size (`env_size`) to update:
 - the context of `ready_to_explore_plan_1` so that the plan is only executed when the agent has a belief `env_size(X,Y)`. Now, the plan will be applicable only if the variables X, Y become bound to specific values based on a _ground_ belief (e.g. `env_size(100, 100)`) of the miner's belief base at run time.
 - the body of the plan so that the random position is computed based on the variables X, Y instead of the hardcoded values 20, 20. 
 
