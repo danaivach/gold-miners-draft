@@ -20,9 +20,7 @@ This tutorial is a simplified version of (...) developed by (...).
 
 ## How to run the project
 
-You can run the project directly in VS Code or from the command line with [Gradle 7.4](https://gradle.org/) (see instructions below).
-
-TODO: describe briefly what happens when you run the project (what will the students see)
+You can run the project directly in VS Code or from the command line with [Gradle 7.4](https://gradle.org/).
 
 ### How to run in VS Code
 
@@ -60,8 +58,7 @@ gradlew.bat task_6
 
 ## Gold Miners Tutorial
 
-Your team of miners is situated on a grid map that represents the Carpathian woods.
-Each agent in your team of miners is implemented by the _agent program_ given in [miner.asl](src/agt/miner.asl). This program is written in [Jason/AgentSpeak](https://github.com/jason-lang/jason), a programming language for _Belief-Desire-Intention (BDI) agents_.
+Your team of miners is situated on a grid map that represents the Carpathian woods. Each agent in your team of miners is implemented by the _agent program_ given in [miner.asl](src/agt/miner.asl). This program is written in [Jason/AgentSpeak](https://github.com/jason-lang/jason), a programming language for _Belief-Desire-Intention (BDI) agents_.
 
 We will learn more about BDI agents in Week 5. For the purpose of this tutorial, it is sufficient to know that a BDI agent has:
 - _beliefs_:  information the agent holds about the world; beliefs are not necessarily true, they may be out of date or inaccurate; the agent's beliefs are stored in its _belief base_;
