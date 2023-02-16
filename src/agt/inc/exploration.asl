@@ -6,6 +6,9 @@ last_direction(null). // the agent initially believes that it hasn't moved previ
  * To detect whether gold is placed in the target position is suffices that the agent visits an adjacent position.
 */
 
+      
++cell(X,Y,gold) <- +gold(X,Y).
+
 /* 
  * Plan for reacting to the creation of goal !explore(X,Y)
  * The agent strives to explore a position (X,Y) by going near the position (i.e. to an adjacent cell)

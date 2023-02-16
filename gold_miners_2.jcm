@@ -19,7 +19,7 @@ mas gold_miners {
     }
     
     workspace mining {
-        artifact mine_env: mining.MiningPlanet(1,0)
+        artifact mine_env: mining.MiningPlanet(7,0)
     }
 
     class-path: lib                      // java class path

@@ -1,115 +1,214 @@
 [Cartago] Workspace mining created.
 [Cartago] artifact mine_env: mining.MiningPlanet(1,0) at mining created.
+[miner4] join workspace /main/mining: done
+[miner4] focusing on artifact mine_env (at workspace /main/mining) using namespace default
 [leader] join workspace /main/mining: done
 [leader] focusing on artifact mine_env (at workspace /main/mining) using namespace default
+[miner4] focus on mine_env: done
 [leader] focus on mine_env: done
-[leader] waiting
 [miner] join workspace /main/mining: done
 [miner] focusing on artifact mine_env (at workspace /main/mining) using namespace default
+[miner3] join workspace /main/mining: done
+[miner3] focusing on artifact mine_env (at workspace /main/mining) using namespace default
+[miner2] join workspace /main/mining: done
+[miner4] Implement Task 1
 [miner] focus on mine_env: done
+[miner3] focus on mine_env: done
 [miner] Implement Task 1
-[miner] I will create the goal to explore (6,12)
-[miner] I am at (6,11) which is adjacent to (6,12)
-[miner] I will create the goal to explore (8,8)
-[miner] I am at (8,9) which is adjacent to (8,8)
-[miner] I will create the goal to explore (9,7)
-[miner] I am at (9,8) which is adjacent to (9,7)
-[miner] I will create the goal to explore (2,9)
-[miner] Gold perceived: gold(9,8)
-[miner] Dropping near(_,_) desires and intentions to handle gold(9,8)
-[miner] Handling gold(9,8) now.
-[leader] waiting
-[miner] I've reached 9x8
-[miner] Successfully picked gold at (9,8)
-[miner] gold removed
-[miner] gold removed
-[miner] gold removed
-[miner] I've reached 0x0
-[WorldModel] Agent 1 carried a gold to depot!
-[miner] current_position(0,0)
-[miner] Successfully dropped
-[miner] Finish handling gold(9,8)
-[miner] I will create the goal to explore (3,10)
-[leader] waiting
-[miner] I am at (3,9) which is adjacent to (3,10)
-[miner] I will create the goal to explore (0,17)
-[miner] I am at (0,16) which is adjacent to (0,17)
-[miner] I will create the goal to explore (12,12)
-[leader] waiting
-[miner] I am at (12,13) which is adjacent to (12,12)
-[miner] I will create the goal to explore (16,13)
-[miner] I am at (15,13) which is adjacent to (16,13)
-[miner] I will create the goal to explore (0,16)
-[leader] waiting
-[miner] I am at (0,15) which is adjacent to (0,16)
-[miner] I will create the goal to explore (6,16)
-[miner] I am at (5,15) which is adjacent to (6,16)
-[miner] I will create the goal to explore (14,8)
-[miner] I am at (14,9) which is adjacent to (14,8)
-[miner] I will create the goal to explore (16,16)
-[leader] waiting
-[miner] I am at (16,15) which is adjacent to (16,16)
-[miner] I will create the goal to explore (9,14)
-[miner] I am at (10,15) which is adjacent to (9,14)
-[miner] I will create the goal to explore (9,12)
-[miner] I am at (9,13) which is adjacent to (9,12)
-[miner] I will create the goal to explore (2,13)
-[miner] I am at (3,13) which is adjacent to (2,13)
-[miner] I will create the goal to explore (13,4)
-[leader] waiting
-[miner] I am at (13,5) which is adjacent to (13,4)
-[miner] I will create the goal to explore (17,0)
-[miner] I am at (17,1) which is adjacent to (17,0)
-[miner] I will create the goal to explore (6,9)
-[leader] waiting
-[miner] I am at (6,8) which is adjacent to (6,9)
-[miner] I will create the goal to explore (19,19)
-[leader] waiting
-[miner] I am at (19,18) which is adjacent to (19,19)
-[miner] I will create the goal to explore (2,11)
-[leader] waiting
-[miner] I am at (2,12) which is adjacent to (2,11)
-[miner] I will create the goal to explore (1,7)
-[miner] I am at (1,8) which is adjacent to (1,7)
-[miner] I will create the goal to explore (5,7)
-[miner] I am at (4,8) which is adjacent to (5,7)
-[miner] I will create the goal to explore (14,1)
-[leader] waiting
-[miner] I am at (14,2) which is adjacent to (14,1)
-[miner] I will create the goal to explore (10,17)
-[leader] waiting
-[miner] I am at (10,16) which is adjacent to (10,17)
-[miner] I will create the goal to explore (7,19)
-[miner] I am at (7,18) which is adjacent to (7,19)
-[miner] I will create the goal to explore (7,8)
-[miner] I am at (7,9) which is adjacent to (7,8)
-[miner] I will create the goal to explore (11,3)
-[miner] I am at (11,4) which is adjacent to (11,3)
-[miner] I will create the goal to explore (9,6)
-[leader] waiting
-[miner] I am at (9,5) which is adjacent to (9,6)
-[miner] I will create the goal to explore (7,9)
-[miner] I am at (7,8) which is adjacent to (7,9)
-[miner] I will create the goal to explore (2,12)
-[miner] I am at (2,11) which is adjacent to (2,12)
-[miner] I will create the goal to explore (0,16)
-[miner] I am at (0,15) which is adjacent to (0,16)
-[miner] I will create the goal to explore (5,11)
-[leader] waiting
-[miner] I am at (5,12) which is adjacent to (5,11)
-[miner] I will create the goal to explore (16,0)
-[leader] waiting
-[miner] I am at (16,1) which is adjacent to (16,0)
-[miner] I will create the goal to explore (16,8)
-[miner] I am at (16,7) which is adjacent to (16,8)
-[miner] I will create the goal to explore (12,15)
-[miner] I am at (12,14) which is adjacent to (12,15)
-[miner] I will create the goal to explore (5,2)
-[leader] waiting
-[miner] I am at (5,3) which is adjacent to (5,2)
+[miner2] focusing on artifact mine_env (at workspace /main/mining) using namespace default
+[miner4] I will create the goal to explore (19,0)
+[miner] I will create the goal to explore (3,16)
+[miner3] Implement Task 1
+[miner2] focus on mine_env: done
+[miner3] I will create the goal to explore (14,5)
+[miner2] Implement Task 1
+[miner2] I will create the goal to explore (17,3)
+[miner3] I am at (14,4) which is adjacent to (14,5)
+[miner3] I will create the goal to explore (6,1)
+[miner3] Gold perceived: gold(11,1)
+[miner4] Gold perceived: gold(11,1)
+[miner] Gold perceived: gold(11,1)
+[miner2] Gold perceived: gold(11,1)
+[miner] Dropping near(_,_) desires and intentions to handle gold(11,1)
+[miner4] Dropping near(_,_) desires and intentions to handle gold(11,1)
+[miner2] Dropping near(_,_) desires and intentions to handle gold(11,1)
+[miner3] Dropping near(_,_) desires and intentions to handle gold(11,1)
+[miner] Handling gold(11,1) now.
+[miner2] Handling gold(11,1) now.
+[miner3] Handling gold(11,1) now.
+[miner4] Handling gold(11,1) now.
+[miner3] I've reached 11x1
+[WorldModel] Agent 1 is trying the pick gold, but there is no gold at 8x1!
+[miner3] failed to catch gold gold(11,1)
+[miner] I've reached 11x1
+[miner3] I will create the goal to explore (12,14)
+[miner3] Gold perceived: gold(11,1)
+[miner3] Dropping near(_,_) desires and intentions to handle gold(11,1)
+[miner3] Handling gold(11,1) now.
+[WorldModel] Agent 1 is trying the pick gold, but there is no gold at 14x1!
+[miner] failed to catch gold gold(11,1)
+[miner] I will create the goal to explore (9,18)
+[miner] Gold perceived: gold(11,1)
+[miner] Dropping near(_,_) desires and intentions to handle gold(11,1)
+[miner] Handling gold(11,1) now.
+[miner2] I've reached 11x1
+[miner] I've reached 11x1
+[WorldModel] Agent 1 is trying the pick gold, but there is no gold at 10x2!
+[WorldModel] Agent 1 is trying the pick gold, but there is no gold at 10x2!
+[miner2] failed to catch gold gold(11,1)
+[miner] failed to catch gold gold(11,1)
+[miner] I will create the goal to explore (0,2)
+[miner2] I will create the goal to explore (8,13)
+[miner2] Gold perceived: gold(11,1)
+[miner] Gold perceived: gold(11,1)
+[miner2] Dropping near(_,_) desires and intentions to handle gold(11,1)
+[miner] Dropping near(_,_) desires and intentions to handle gold(11,1)
+[miner2] Handling gold(11,1) now.
+[miner] Handling gold(11,1) now.
+[miner4] I've reached 11x1
+[WorldModel] Agent 1 is trying the pick gold, but there is no gold at 10x0!
+[miner4] failed to catch gold gold(11,1)
+[miner4] Gold distances: [d(5,gold(13,3)),d(5,gold(13,3)),d(5,gold(13,3)),d(5,gold(13,3)),d(5,gold(13,3))]5
+[miner4] Next gold is gold(13,3)
+[miner4] Handling gold(13,3) now.
+[miner] I've reached 11x1
+[WorldModel] Agent 1 is trying the pick gold, but there is no gold at 11x0!
+[miner] failed to catch gold gold(11,1)
+[miner] Gold distances: [d(2,gold(11,1)),d(4,gold(13,3)),d(4,gold(13,3)),d(4,gold(13,3)),d(4,gold(13,3)),d(4,gold(13,3)),d(4,gold(13,3)),d(4,gold(13,3))]8
+[miner] Next gold is gold(11,1)
+[miner] Handling gold(11,1) now.
+[miner3] I've reached 11x1
+[WorldModel] Agent 1 is trying the pick gold, but there is no gold at 12x2!
+[miner3] failed to catch gold gold(11,1)
+[miner3] Gold distances: [d(2,gold(13,3)),d(2,gold(13,3)),d(2,gold(13,3)),d(2,gold(13,3)),d(2,gold(13,3)),d(2,gold(13,3)),d(2,gold(13,3)),d(2,gold(13,3)),d(2,gold(13,3))]9
+[miner3] Next gold is gold(13,3)
+[miner3] Handling gold(13,3) now.
+[miner2] I've reached 11x1
+[WorldModel] Agent 1 is trying the pick gold, but there is no gold at 10x1!
+[miner2] failed to catch gold gold(11,1)
+[miner2] Gold distances: [d(5,gold(13,3)),d(5,gold(13,3)),d(5,gold(13,3)),d(5,gold(13,3)),d(5,gold(13,3)),d(5,gold(13,3)),d(5,gold(13,3)),d(5,gold(13,3)),d(5,gold(13,3)),d(5,gold(13,3)),d(5,gold(13,3)),d(5,gold(13,3)),d(5,gold(13,3)),d(5,gold(13,3)),d(5,gold(13,3)),d(5,gold(13,3)),d(5,gold(13,3)),d(5,gold(13,3)),d(5,gold(13,3)),d(5,gold(13,3)),d(5,gold(13,3)),d(5,gold(13,3)),d(5,gold(13,3))]23
+[miner2] Next gold is gold(13,3)
+[miner2] Handling gold(13,3) now.
+[miner] I've reached 11x1
+[WorldModel] Agent 1 is trying the pick gold, but there is no gold at 12x2!
+[miner] failed to catch gold gold(11,1)
+[miner] Gold distances: [d(2,gold(13,3)),d(2,gold(13,3)),d(2,gold(13,3)),d(2,gold(13,3)),d(2,gold(13,3)),d(2,gold(13,3)),d(2,gold(13,3)),d(2,gold(13,3)),d(2,gold(13,3)),d(2,gold(13,3)),d(2,gold(13,3)),d(2,gold(13,3)),d(2,gold(13,3)),d(2,gold(13,3)),d(2,gold(13,3)),d(2,gold(13,3)),d(2,gold(13,3)),d(2,gold(13,3)),d(2,gold(13,3)),d(2,gold(13,3)),d(2,gold(13,3)),d(2,gold(13,3)),d(2,gold(13,3)),d(2,gold(13,3)),d(2,gold(13,3))]25
+[miner] Next gold is gold(13,3)
+[miner] Handling gold(13,3) now.
+[miner2] I've reached 13x3
+[WorldModel] Agent 1 is trying the pick gold, but there is no gold at 16x3!
+[miner2] failed to catch gold gold(13,3)
+[miner2] Gold distances: [d(6,gold(11,1)),d(6,gold(11,1)),d(6,gold(11,1)),d(6,gold(11,1)),d(6,gold(11,1)),d(6,gold(11,1)),d(6,gold(11,1)),d(6,gold(11,1)),d(6,gold(11,1))]9
+[miner2] Next gold is gold(11,1)
+[miner2] Handling gold(11,1) now.
+[miner3] I've reached 13x3
+[WorldModel] Agent 1 is trying the pick gold, but there is no gold at 11x3!
+[miner3] failed to catch gold gold(13,3)
+[miner3] Gold distances: [d(2,gold(11,1)),d(2,gold(11,1)),d(2,gold(11,1)),d(2,gold(11,1)),d(2,gold(11,1)),d(2,gold(11,1)),d(2,gold(11,1)),d(2,gold(11,1)),d(2,gold(11,1)),d(2,gold(11,1)),d(2,gold(11,1)),d(2,gold(11,1)),d(2,gold(11,1)),d(2,gold(11,1)),d(2,gold(11,1)),d(2,gold(11,1)),d(2,gold(11,1)),d(2,gold(11,1)),d(2,gold(11,1)),d(2,gold(11,1)),d(2,gold(11,1)),d(2,gold(11,1)),d(2,gold(11,1)),d(2,gold(11,1)),d(2,gold(11,1)),d(2,gold(11,1)),d(2,gold(11,1)),d(2,gold(11,1)),d(2,gold(11,1)),d(2,gold(11,1)),d(2,gold(11,1)),d(2,gold(11,1))]32
+[miner3] Next gold is gold(11,1)
+[miner3] Handling gold(11,1) now.
+[miner] I've reached 13x3
+[WorldModel] Agent 1 is trying the pick gold, but there is no gold at 14x2!
+[miner] failed to catch gold gold(13,3)
 [miner] I will create the goal to explore (3,5)
-[miner] I am at (3,4) which is adjacent to (3,5)
-[miner] I will create the goal to explore (3,18)
-[leader] waiting
-[miner] I am at (3,17) which is adjacent to (3,18)
-[miner] I will create the goal to explore (9,3)
+[miner] Gold perceived: gold(11,1)
+[miner] Dropping near(_,_) desires and intentions to handle gold(11,1)
+[miner] Handling gold(11,1) now.
+[miner] I've reached 11x1
+[WorldModel] Agent 1 is trying the pick gold, but there is no gold at 10x1!
+[miner] failed to catch gold gold(11,1)
+[miner] Gold distances: [d(4,gold(13,3))]1
+[miner] Next gold is gold(13,3)
+[miner] Handling gold(13,3) now.
+[miner2] I've reached 11x1
+[WorldModel] Agent 1 is trying the pick gold, but there is no gold at 14x1!
+[miner2] failed to catch gold gold(11,1)
+[miner2] Gold distances: [d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3))]19
+[miner2] Next gold is gold(13,3)
+[miner2] Handling gold(13,3) now.
+[miner2] I've reached 13x3
+[miner4] I've reached 13x3
+[WorldModel] Agent 1 is trying the pick gold, but there is no gold at 12x3!
+[miner2] failed to catch gold gold(13,3)
+[miner2] Gold distances: [d(2,gold(11,1)),d(2,gold(11,1)),d(2,gold(11,1)),d(2,gold(11,1)),d(2,gold(11,1))]5
+[miner2] Next gold is gold(11,1)
+[miner2] Handling gold(11,1) now.
+[WorldModel] Agent 1 is trying the pick gold, but there is no gold at 11x3!
+[miner4] failed to catch gold gold(13,3)
+[miner4] Gold distances: [d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1))]92
+[miner4] Next gold is gold(11,1)
+[miner4] Handling gold(11,1) now.
+[miner2] I've reached 11x1
+[WorldModel] Agent 1 is trying the pick gold, but there is no gold at 9x1!
+[miner2] failed to catch gold gold(11,1)
+[miner2] Gold distances: [d(5,gold(13,3))]1
+[miner2] Next gold is gold(13,3)
+[miner2] Handling gold(13,3) now.
+[miner] I've reached 13x3
+[WorldModel] Agent 1 is trying the pick gold, but there is no gold at 13x2!
+[miner] failed to catch gold gold(13,3)
+[miner] Gold distances: [d(1,gold(11,1)),d(1,gold(11,1)),d(1,gold(11,1)),d(1,gold(11,1)),d(1,gold(11,1)),d(1,gold(11,1)),d(1,gold(11,1)),d(1,gold(11,1)),d(1,gold(11,1)),d(1,gold(11,1)),d(1,gold(11,1)),d(1,gold(11,1)),d(1,gold(11,1)),d(1,gold(11,1)),d(1,gold(11,1)),d(1,gold(11,1)),d(1,gold(11,1)),d(1,gold(11,1)),d(1,gold(11,1)),d(1,gold(11,1)),d(1,gold(11,1)),d(1,gold(11,1)),d(1,gold(11,1)),d(1,gold(11,1)),d(1,gold(11,1)),d(1,gold(11,1)),d(1,gold(11,1)),d(1,gold(11,1)),d(1,gold(11,1)),d(1,gold(11,1)),d(1,gold(11,1)),d(1,gold(11,1)),d(1,gold(11,1)),d(1,gold(11,1)),d(1,gold(11,1)),d(1,gold(11,1)),d(1,gold(11,1)),d(1,gold(11,1)),d(1,gold(11,1)),d(1,gold(11,1)),d(1,gold(11,1)),d(1,gold(11,1)),d(1,gold(11,1)),d(1,gold(11,1)),d(1,gold(11,1)),d(1,gold(11,1)),d(1,gold(11,1)),d(1,gold(11,1)),d(1,gold(11,1)),d(1,gold(11,1)),d(1,gold(11,1)),d(1,gold(11,1)),d(1,gold(11,1)),d(1,gold(11,1)),d(1,gold(11,1)),d(1,gold(11,1)),d(1,gold(11,1)),d(1,gold(11,1)),d(1,gold(11,1)),d(1,gold(11,1)),d(1,gold(11,1)),d(1,gold(11,1)),d(1,gold(11,1)),d(1,gold(11,1))]64
+[miner] Next gold is gold(11,1)
+[miner] Handling gold(11,1) now.
+[miner4] I've reached 11x1
+[WorldModel] Agent 1 is trying the pick gold, but there is no gold at 12x0!
+[miner4] failed to catch gold gold(11,1)
+[miner4] Gold distances: [d(1,gold(11,1)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3))]33
+[miner4] Next gold is gold(11,1)
+[miner4] Handling gold(11,1) now.
+[miner] I've reached 11x1
+[miner3] I've reached 11x1
+[WorldModel] Agent 1 is trying the pick gold, but there is no gold at 12x1!
+[miner] failed to catch gold gold(11,1)
+[miner] Gold distances: [d(3,gold(13,3))]1
+[miner] Next gold is gold(13,3)
+[miner] Handling gold(13,3) now.
+[WorldModel] Agent 1 is trying the pick gold, but there is no gold at 14x1!
+[miner3] failed to catch gold gold(11,1)
+[miner3] Gold distances: [d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3)),d(3,gold(13,3))]58
+[miner3] Next gold is gold(13,3)
+[miner3] Handling gold(13,3) now.
+[miner4] I've reached 11x1
+[miner4] Successfully picked gold at (11,1)
+[miner3] I've reached 13x3
+[WorldModel] Agent 1 is trying the pick gold, but there is no gold at 11x2!
+[miner3] failed to catch gold gold(13,3)
+[miner3] Gold distances: [d(1,gold(11,1)),d(1,gold(11,1)),d(1,gold(11,1)),d(1,gold(11,1))]4
+[miner3] Next gold is gold(11,1)
+[miner3] Handling gold(11,1) now.
+[miner3] I've reached 11x1
+[WorldModel] Agent 1 is trying the pick gold, but there is no gold at 13x1!
+[miner3] failed to catch gold gold(11,1)
+[miner3] I will create the goal to explore (16,8)
+[miner] I've reached 13x3
+[WorldModel] Agent 1 is trying the pick gold, but there is no gold at 12x2!
+[miner] failed to catch gold gold(13,3)
+[miner] Gold distances: [d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1))]4
+[miner] Next gold is gold(11,1)
+[miner] Handling gold(11,1) now.
+[miner2] I've reached 13x3
+[WorldModel] Agent 1 is trying the pick gold, but there is no gold at 12x3!
+[miner2] failed to catch gold gold(13,3)
+[miner2] Gold distances: [d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1)),d(3,gold(11,1))]55
+[miner2] Next gold is gold(11,1)
+[miner2] Handling gold(11,1) now.
+[miner2] I've reached 11x1
+[WorldModel] Agent 1 is trying the pick gold, but there is no gold at 9x2!
+[miner2] failed to catch gold gold(11,1)
+[miner2] Gold distances: [d(5,gold(13,3))]1
+[miner2] Next gold is gold(13,3)
+[miner2] Handling gold(13,3) now.
+[miner] I've reached 11x1
+[WorldModel] Agent 1 is trying the pick gold, but there is no gold at 12x1!
+[miner] failed to catch gold gold(11,1)
+[miner] Gold distances: [d(2,gold(13,3)),d(2,gold(13,3)),d(2,gold(13,3)),d(2,gold(13,3)),d(2,gold(13,3)),d(2,gold(13,3)),d(2,gold(13,3)),d(2,gold(13,3)),d(2,gold(13,3)),d(2,gold(13,3)),d(2,gold(13,3)),d(2,gold(13,3)),d(2,gold(13,3)),d(2,gold(13,3)),d(2,gold(13,3)),d(2,gold(13,3)),d(2,gold(13,3)),d(2,gold(13,3)),d(2,gold(13,3)),d(2,gold(13,3)),d(2,gold(13,3)),d(2,gold(13,3)),d(2,gold(13,3)),d(2,gold(13,3)),d(2,gold(13,3)),d(2,gold(13,3)),d(2,gold(13,3)),d(2,gold(13,3)),d(2,gold(13,3)),d(2,gold(13,3)),d(2,gold(13,3)),d(2,gold(13,3)),d(2,gold(13,3)),d(2,gold(13,3)),d(2,gold(13,3)),d(2,gold(13,3)),d(2,gold(13,3)),d(2,gold(13,3)),d(2,gold(13,3)),d(2,gold(13,3))]40
+[miner] Next gold is gold(13,3)
+[miner] Handling gold(13,3) now.
+[miner] I've reached 13x3
+[miner2] I've reached 13x3
+[WorldModel] Agent 1 is trying the pick gold, but there is no gold at 12x3!
+[miner] failed to catch gold gold(13,3)
+[miner] I will create the goal to explore (13,9)
+[WorldModel] Agent 1 is trying the pick gold, but there is no gold at 12x3!
+[miner2] failed to catch gold gold(13,3)
+[miner2] I will create the goal to explore (7,2)

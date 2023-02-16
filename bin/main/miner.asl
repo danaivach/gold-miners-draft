@@ -7,6 +7,7 @@
 
 /* Initial beliefs */
 ready_to_explore. // the miner initially believes that it is ready to explore the environment
+mine_base(0,0). // the miner initially believes that the base of the mine is in position (0,0)
 
 /* Initial goals */
 !start. // the miner initially has the goal to start
@@ -49,24 +50,23 @@ ready_to_explore. // the miner initially believes that it is ready to explore th
  * The miner reacts by waiting and becoming again ready to explore.
  * Triggering event: Addition of belief ready_to_explore
  * Context : true (the plan is always applicable)
- * Body: waits and removes the old belief ready_to_explore and add a new belief ready_to_explore
+ * Body: waits and removes the old belief ready_to_explore and adds a new belief ready_to_explore
 */
 @ready_to_explore_plan_2
 +ready_to_explore  : true
    <- .wait(100); // waits 100ms
-      -+ready_to_explore. // removes the old belief ready_to_explore and add a new belief ready_to_explore
+      -+ready_to_explore. // removes the old belief ready_to_explore and adds a new belief ready_to_explore
 
 /* 
  * Plan for reacting to a new belief near(X,Y)
  * The miner reacts by becoming again ready to explore
  * Triggering event: Addition of belief near(X,Y)
  * Context : ready_to_explore
- * Body: removes the old belief ready_to_explore and add a new belief ready_to_explore
+ * Body: removes the old belief ready_to_explore and adds a new belief ready_to_explore
 */
 @near_plan
 +near(X,Y) : ready_to_explore 
-   <- -+ready_to_explore. // removes the old belief ready_to_explore and add a new belief ready_to_explore
-
+   <- -+ready_to_explore. // removes the old belief ready_to_explore and adds a new belief ready_to_explore
 
 /* 
  * Plan for achieving the goal !move_to(X,Y)
@@ -99,44 +99,74 @@ ready_to_explore. // the miner initially believes that it is ready to explore th
 
 // SOLUTION TASK 4 (1/2)
 @gold_plan[atomic]           // atomic: so as not to handle another event until handle gold is initialised
-+gold(X,Y)
-  :  not carrying_gold & ready_to_explore
-  <- -ready_to_explore;
++gold(X,Y) 
+   : not carrying_gold & ready_to_explore
+   <- -ready_to_explore;
      .print("Gold perceived: ",gold(X,Y));
      !init_handle(gold(X,Y)).
 
 
-/* The next plans encode how to handle a piece of gold.
- * The first one drops the desire to be near some location,
- * which could be true if the agent was just randomly moving around looking for gold.
- * The second one simply calls the goal to handle the gold.
- * The third plan is the one that actually results in dealing with the gold.
- * It raises the goal to go to position X,Y, then the goal to pickup the gold,
- * then to go to the position of the depot, and then to drop the gold and remove
- * the belief that there is gold in the original position.
- * Finally, it prints a message and raises a goal to choose another gold piece.
- * The remaining two plans handle failure.
+/* 
+ * Plan for achieving the goal !init_handle(Gold), i.e. !init_handle(gold(X,Y))
+ * The agent strives to achieve the goal by 1) removing any goals it currently has 
+ * for moving to any position that is irrelevant to the position of the gold, and 
+ * 2) creating the goal to handle the Gold. 
+ * Triggering event: creation of goal !init_handle(Gold)
+ * Context: the miner has a goal to move to a position 
  */
-
-@pih1[atomic]
+@init_handle_plan_1[atomic]
 +!init_handle(Gold)
-  :  .desire(go_near(_,_))
+  :  .desire(go_near(_,_)) // the miner has a goal to go near to any position
   <- .print("Dropping near(_,_) desires and intentions to handle ",Gold);
-     .drop_desire(go_near(_,_));
+     .drop_desire(go_near(_,_)); // action that removes the goal of going near to any position
      !!handle(Gold).
-     
+
+/* 
+ * Plan for achieving the goal !init_handle(Gold), i.e. !init_handle(gold(X,Y))
+ * The agent strives to achieve the goal creating the goal to handle the Gold. 
+ * Triggering event: creation of goal !init_handle(Gold)
+ * Context: true (the plan is always applicable)
+ */   
+@init_handle_plan_2[atomic]
++!init_handle(Gold)
+  :  true
+  <- !!handle(Gold). // creates the goal !handle(Gold), i.e. !handle(gold(X,Y))
+
+/* 
+ * Plan for achieving the goal !handle(gold(X,Y))
+ * The agent strives to achieve the goal by 1) movin 
+ * Triggering event: creation of goal !init_handle(Gold)
+ * Context: true (the plan is always applicable)
+ */
 +!handle(gold(X,Y)) 
-  :  not ready_to_explore & depot(_,BaseX,BaseY)
+  :  not ready_to_explore & mine_base(BaseX,BaseY)
   <- .print("Handling ",gold(X,Y)," now.");
+
      !move_to(X,Y);
      pick;
+
+     //
      !confirm_pick;
+
      !move_to(BaseX,BaseY);
+
+     //
+     !confirm_drop; //_location
      drop;
-     !confirm_drop;
      .print("Finish handling ",gold(X,Y));
+     //
      !!choose_gold.
 
+
+// if ensure(pick/drop) failed, pursue another gold
+-!handle(G) : G
+  <- .print("failed to catch gold ",G);
+     .abolish(G); // ignore source
+     !!choose_gold.
+
+-!handle(G) : true
+  <- .print("failed to handle ",G,", it isn't in the BB anyway");
+     !!choose_gold.
 
 /* The next plans deal with picking up and dropping gold. */
 
@@ -145,12 +175,22 @@ ready_to_explore. // the miner initially believes that it is ready to explore th
      .abolish(gold(X,Y));
      .print("Successfully picked gold at (",X,",", Y,")").
 
--gold(X,Y) : true <- .print("gold removed").
-
-+!confirm_drop : current_position(X,Y) & depot(_,X,Y)
++!confirm_drop : current_position(X,Y) // make this an operation that returns a boolean
    <- 
-   .print(current_position(X,Y));
-   .print("Successfully dropped").
+   base_at(X,Y,State);
+   !confirm_drop(State).
+
++!confirm_drop(State) : State // make this an operation that returns a boolean
+   <- 
+   .print("Successfully dropped gold").
+
++!confirm_drop(State) : mine_base(BaseX, BaseY) <- 
+   -mine_base(_,_);
+   .print("Dropping gold failed. Retrying to drop gold.");
+   .wait(2000);
+   !move_to(BaseX,BaseY);
+   !confirm_drop.
+
 
 /* The next plans encode how the agent can choose the next gold piece
  * to pursue (the closest one to its current position) or,
@@ -162,6 +202,7 @@ ready_to_explore. // the miner initially believes that it is ready to explore th
 
 // Finished one gold, but others left
 // find the closest gold among the known options,
+// Keep it , describe the feature on README
 +!choose_gold
   :  gold(_,_)
   <- .findall(gold(X,Y),gold(X,Y),LG);
@@ -185,7 +226,4 @@ ready_to_explore. // the miner initially believes that it is ready to explore th
 { include("$jacamoJar/templates/common-cartago.asl") }
 
 /* Import behavior of agents that explore the mine environment */
-{ include("inc/exploring_agent.asl") }
-
-/* Import behavior of agents that perceive the mine environment */
-{ include("inc/generic_agent.asl") }
+{ include("inc/exploration.asl") }

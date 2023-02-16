@@ -9,6 +9,7 @@ import java.util.logging.Logger;
 import cartago.Artifact;
 import cartago.OPERATION;
 import cartago.ObsProperty;
+import cartago.OpFeedbackParam;
 
 public class MiningPlanet extends Artifact {
 
@@ -73,6 +74,22 @@ public class MiningPlanet extends Artifact {
         updateAgPercept();
     }
 
+    @OPERATION void base_at(int x, int y, OpFeedbackParam<Boolean> state) {
+        if (sleep > 0) await_time(sleep);
+        Location expectedLocation = new Location(x, y);
+        Location actualLocation = model.getDepot();
+        System.out.println(expectedLocation);
+        System.out.println(actualLocation);
+        if (expectedLocation.x == actualLocation.x && expectedLocation.y == actualLocation.y) {
+            System.out.println(true);
+            state.set(true);
+        }
+        else {
+            System.out.println(false);
+            state.set(false);
+        }
+    }
+
     public synchronized void initWorld(int w) {
         simId = w;
         try {
@@ -84,6 +101,7 @@ public class MiningPlanet extends Artifact {
                 case 4: model = WorldModel.world4(); break;
                 case 5: model = WorldModel.world5(); break;
                 case 6: model = WorldModel.world6(); break;
+                case 7: model = WorldModel.world7(); break;
                 default:
                     logger.info("Invalid index!");
                     return;
@@ -95,7 +113,7 @@ public class MiningPlanet extends Artifact {
                 }
             }
             defineObsProperty("env_size", model.getWidth(), model.getHeight());
-            defineObsProperty("depot", simId, model.getDepot().x, model.getDepot().y);
+            //defineObsProperty("depot", simId, model.getDepot().x, model.getDepot().y);
             defineObsProperty("current_position", -1, -1);
             updateAgPercept();
             //informAgsEnvironmentChanged();
@@ -118,12 +136,6 @@ public class MiningPlanet extends Artifact {
         ObsProperty p = getObsProperty("current_position");
         p.updateValue(0, l.x);
         p.updateValue(1, l.y);
-
-        Location ld = model.getDepot();
-        ObsProperty pd = getObsProperty("depot");
-        System.out.println(ld.x + " " + ld.y);
-        pd.updateValue(1, ld.x);
-        pd.updateValue(2, ld.y);
 
         if (model.isCarryingGold(agId)) {
             if (!hasObsProperty("carrying_gold"))

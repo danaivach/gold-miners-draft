@@ -11,8 +11,20 @@
 */
 
 mas gold_miners {
-    agent miner1 : miner2.asl  {
+    agent leader : leader.asl {
         focus: mining.mine_env
+    }
+    agent miner : miner.asl  {
+        focus: mining.mine_env
+    }
+    agent miner2 : miner.asl  {
+        focus: mining.mine_env_2
+    }
+    agent miner3 : miner.asl  {
+        focus: mining.mine_env_3
+    }
+    agent miner4 : miner.asl  {
+        focus: mining.mine_env_4
     }
     
     workspace mining {
@@ -20,6 +32,9 @@ mas gold_miners {
         // first parameter is the id of the scenario
         // second parameter is the id of the agent in the scenario
         artifact mine_env: mining.MiningPlanet(1,0)
+        artifact mine_env_2: mining.MiningPlanet(1,1)
+        artifact mine_env_3: mining.MiningPlanet(1,2)
+        artifact mine_env_4: mining.MiningPlanet(1,3)
     }
 
     class-path: lib                      // java class path

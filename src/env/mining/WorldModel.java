@@ -92,7 +92,6 @@ public class WorldModel extends GridWorldModel {
         depot = new Location(x, y);
         data[x][y] = DEPOT;
         add(WorldModel.DEPOT, x, y);  
-        System.out.println("YOOOOOOOOOOOOOO" + getDepot());
     }
 
     public void setAgCarryingGold(int ag) {
@@ -199,6 +198,16 @@ public class WorldModel extends GridWorldModel {
         } // se
     }
     */
+
+    /** no gold/no obstacle world/ 1 agent */
+    static WorldModel world7() throws Exception {
+        WorldModel model = WorldModel.create(21, 21, 1);
+        model.setId("Scenario 1");
+        model.setDepot(0, 0);
+        model.setAgPos(0, 1, 0);
+        model.setInitialNbGolds(model.countObjects(WorldModel.GOLD));
+        return model;
+    }
 
 
     /** no gold/no obstacle world */

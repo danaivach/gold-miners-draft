@@ -1,48 +1,39 @@
 [Cartago] Workspace mining created.
 [Cartago] artifact mine_env: mining.MiningPlanet(1,0) at mining created.
-[miner] join workspace /main/mining: done
+[miner1] join workspace /main/mining: done
+[miner1] focusing on artifact mine_env (at workspace /main/mining) using namespace default
+[miner3] join workspace /main/mining: done
+[miner3] focusing on artifact mine_env (at workspace /main/mining) using namespace default
+[miner2] join workspace /main/mining: done
+[miner1] focus on mine_env: done
+[miner2] focusing on artifact mine_env (at workspace /main/mining) using namespace default
+[miner3] focus on mine_env: done
+[miner4] join workspace /main/mining: done
+[miner4] focusing on artifact mine_env (at workspace /main/mining) using namespace default
+[miner2] focus on mine_env: done
+[miner4] focus on mine_env: done
 [leader] join workspace /main/mining: done
-[miner] focusing on artifact mine_env (at workspace /main/mining) using namespace default
 [leader] focusing on artifact mine_env (at workspace /main/mining) using namespace default
-[miner] focus on mine_env: done
+[miner1] Implement Task 1
 [leader] focus on mine_env: done
-[leader] waiting
-[miner] Implement Task 1
-[miner] I will create the goal to explore (6,11)
-[miner] I am at (6,10) which is adjacent to (6,11)
-[miner] I will create the goal to explore (8,8)
-[miner] I am at (8,9) which is adjacent to (8,8)
-[miner] I will create the goal to explore (3,18)
-[leader] waiting
-[miner] I am at (3,17) which is adjacent to (3,18)
-[miner] I will create the goal to explore (17,18)
-[miner] I am at (16,17) which is adjacent to (17,18)
-[miner] I will create the goal to explore (18,7)
-[leader] waiting
-[miner] I am at (18,8) which is adjacent to (18,7)
-[miner] I will create the goal to explore (15,19)
-[miner] I am at (15,18) which is adjacent to (15,19)
-[miner] I will create the goal to explore (5,12)
-[leader] waiting
-[miner] I am at (5,13) which is adjacent to (5,12)
-[miner] I will create the goal to explore (1,12)
-[miner] I am at (2,13) which is adjacent to (1,12)
-[miner] I will create the goal to explore (6,8)
-[miner] I am at (6,9) which is adjacent to (6,8)
-[miner] I will create the goal to explore (19,1)
-[leader] waiting
-[miner] I am at (19,2) which is adjacent to (19,1)
-[miner] I will create the goal to explore (10,19)
-[leader] waiting
-[miner] I am at (10,18) which is adjacent to (10,19)
-[miner] I will create the goal to explore (8,9)
-[miner] I am at (8,10) which is adjacent to (8,9)
-[miner] I will create the goal to explore (18,10)
-[leader] waiting
-[miner] I am at (17,10) which is adjacent to (18,10)
-[miner] I will create the goal to explore (13,7)
-[miner] I am at (13,8) which is adjacent to (13,7)
-[miner] I will create the goal to explore (18,17)
-[leader] waiting
-[miner] I am at (18,16) which is adjacent to (18,17)
-[miner] I will create the goal to explore (13,7)
+[miner3] Implement Task 1
+[miner4] Implement Task 1
+[miner2] Implement Task 1
+[miner4] I will create the goal to explore (13,4)
+[miner3] I will create the goal to explore (3,7)
+[miner1] I will create the goal to explore (9,16)
+[miner2] I will create the goal to explore (1,13)
+[miner3] I am at (4,7) which is adjacent to (3,7)
+[miner3] I will create the goal to explore (12,3)
+[leader] No failure event was generated for +!work_on_base[agent_not_found(miner),code(.send(miner,tell,mine_base(14,19))),code_line(24),code_src("file:src/agt/leader.asl"),error(receiver_not_found),error_msg("Receiver 'miner' does not exist! Could not send <mid1,leader,tell,miner,mine_base(14,19)>"),source(self)]
+intention 14: 
+    +!work_on_base[source(self)] <- ... .send(miner,tell,mine_base(X,Y)); !work_on_base / {H=21, X=14, Y=19, _409=0, _408=0, W=21}
+    +!start[source(self)] <- ... !work_on_base / {}
+
+[leader] Error in internal action '.send(miner,tell,mine_base(X,Y))' (file:src/agt/leader.asl:24): Receiver 'miner' does not exist! Could not send <mid1,leader,tell,miner,mine_base(14,19)>
+[miner4] I am at (12,5) which is adjacent to (13,4)
+[miner4] I will create the goal to explore (3,18)
+[miner1] I am at (8,15) which is adjacent to (9,16)
+[miner1] I will create the goal to explore (0,5)
+[miner2] I am at (2,12) which is adjacent to (1,13)
+[miner2] I will create the goal to explore (17,11)
