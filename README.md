@@ -1,4 +1,8 @@
-# Programming your first Agent! 
+# Programming your first Agent(s)!
+
+Recently, rumours about the discovery of gold scattered around deep Carpathian woods made their way into the public. Consequently, hordes of gold miners are pouring into the area in the hope to collect as much of gold nuggets as possible. In this introductory tutorial, your task is to program a team of agents that will collect the gold and deliver it to a depot for safe storage.
+
+This tutorial is a simplified introductory version of (...) developed by (...). The tutorial already provides the scafold required to implement your team of agents — but only leaves a few details.
 
 ## Table of Contents
 -   [How to run the project](#how-to-run-the-project)
@@ -13,31 +17,89 @@
 -   [Submission]
 
 ## How to run the project
-Run with [Gradle 7.4](https://gradle.org/): 
-- MacOS and Linux: run the following commands
-- Windows: replace `./gradlew` with `gradlew.bat`
+
+You can run the project directly in VS Code or from the command line with [Gradle 7.4](https://gradle.org/).
+
+### How to run in VS Code
+
+TODO: add instructions
+
+### Command Line (MacOS/Linux)
 
 For Tasks 1-4:
 ```shell
-./gradlew task_a
+./gradlew task_1_4
 ```
 For Task 5:
 ```shell
-./gradlew task_b
+./gradlew task_6
 ```
 For Task 6: 
 ```shell
-./gradlew task_c
+./gradlew task_6
+```
+
+### Command Line (Windows)
+
+For Tasks 1-4:
+```shell
+gradlew.bat task_1_4
+```
+For Task 5:
+```shell
+gradlew.bat task_5
+```
+For Task 6: 
+```shell
+gradlew.bat task_6
 ```
 
 ## Gold Miners Tutorial
 
-### Task 1 - Hello world
-In `miner.asl`, l. 8-12 define the _initial beliefs and goals_ of a miner agent. The miner is initialized as follows:
-- `ready_to_explore`: the agent believes that it is ready to explore the mine for gold;
-- `!start`: the agent has the goal to start.
+Your team of miners is situated on a grid map that represents the Carpathian woods.
+Each agent in your team of miners is implemented by the _agent program_ given in [miner.asl](src/agt/miner.asl). This program is written in [Jason/AgentSpeak](https://github.com/jason-lang/jason), a programming language for _Belief-Desire-Intention (BDI) agents_.
 
-Upon initialization, the miner reacts to the creation of initial beliefs and goals. For example, the miner stives to achieve the goal `!start` by executing the `start_plan` (l. 19-21). Update the body of the `start_plan` so that the miner prints "Hello world" upon initialization.
+We will learn more about BDI agents in Week 5. For the purpose of this tutorial, it is sufficient to know that a BDI agent has:
+- _beliefs_:  information the agent holds about the world; beliefs are not necessarily true, they may be out of date or inaccurate; the agent's beliefs are stored in its _belief base_;
+- _desires_ or _goals_: states of affairs the agent wishes to bring to the world;
+- _intentions_: desires that the agent is committed to achieve.
+
+In [miner.asl](src/agt/miner.asl), lines 8-12 define the _initial beliefs and goals_ of a miner agent:
+- `ready_to_explore`: the agent believes that it is ready to woods for gold;
+- `!start`: the agent has an initial goal to start, which is similar to the `main` method of a Java program; goals are expressed similarly to beliefs except they are preceeded by an exclamation point (`!`).
+
+A BDI agent achieves its goals by executing _plans_ programmed by a developer. A plan has the following form:
+
+```
+@<plan annotation>
+<trigerring_event> : <application_context> <-
+   <action_1>;
+   <action_2>;
+   <action_3>.
+```
+
+In this tutorial, we will only use plan annotations to refer to plans easily. Then:
+- the _triggering event_ states which event can trigger the execution of the plan;
+- the _application context_ states the context in which the plan is applicable; if the context is `true`, the plan is applicable in any context;
+- the _plan body_ is a recipe for action; note that the plan body is preceded by the sign `<-`, each action is followed by a semicolon (`;`), and the plan ends with a dot (`.`).
+
+In this tutorial, we will use the following types of triggering events:
+- `+!<goal>`: signals the creation of a goal, ex. `+!start`;
+- `-!<goal>`: signals the deletion of a goal, ex. when the execution of an action in the plan body has failed;
+- `+<belief>`: this event signals the addition of a blief to the agent's belief base, ex. `+ready_to_explore`;
+- `-<belief>`: signals the delition of a belief from the agent's belief base, ex. `-ready_to_explore`.
+
+With this minimal information, you are now ready to program your first agent!
+
+### Task 1 - Hello world
+
+Your first task is to write a plan that prints "Hello world of miners!" when the miner agent starts.
+
+To print a statement, you can use the following action — and note that this is a special action whose name starts with a dot (`.`):
+
+```
+.print("text to be printed")
+```
 
 <details>
 <summary>Solution</summary>
@@ -49,29 +111,44 @@ Upon initialization, the miner reacts to the creation of initial beliefs and goa
  * Plan for achieving the goal !start 
  * Triggering event: Creation of goal !start
  * Context: true (the plan is always applicable)
- * Body: prints "Hello World"
+ * Body: prints "Hello world of miners!"
 */
 @start_plan 
-+!start : true 
-   <- .print("Hello World").
++!start : true <-
+   .print("Hello world of miners!").
 ```
 
 </details>
 
 ### Task 2 - Beliefs about the world
-An agent can update, add, or remove beliefs of its belief base at run time, so that its behavior remains decoupled details about the world.
 
-The miner agent reacts to the creation of the initial belief `ready_to_explore` by executing the `ready_to_explore_plan_1` (l.32-37). Based on the body of the plan, the miner behaves as follows:
-- it computes a random position (X,Y) within the mine environment;
-- it creates the goal `!explore(X,Y)` for exploring the route to (X,Y) while looking for gold.
-
-Currently, the dimension of the mine environment (Width = 21, Height = 21) are hardcoded into the miner's plan. We can also use variable to decouple the miner's plan from specific environment details. Visit http://localhost:3272/ to inspect which beliefs the agent acquires at run time:
+The miner agent acquires beliefs throughout its lifetime, and you can inspect its belief base by visiting http://localhost:3272/ while running the project:
 
 <img src="media/miner1-beliefs.png?raw=true" width="400">
 
-Check the agent's belief about the environment size (`env_size`) to update:
-- the context of `ready_to_explore_plan_1` so that the plan is only executed when the agent has a belief `env_size(X,Y)`. Now, the plan will be applicable only if the variables X, Y become bound to specific values based on a _ground_ belief (e.g. `env_size(100, 100)`) of the miner's belief base at run time.
-- the body of the plan so that the random position is computed based on the variables X, Y instead of the hardcoded values 20, 20. 
+The creation of the initial belief `ready_to_explore` will trigger the plan `@ready_to_explore_plan` on lines 32-37. This plan achieves the following:
+- it computes a random position (X,Y) within the grid environment;
+- it creates the goal `!explore(X,Y)` for exploring the route to (X,Y); the agent will look for gold while exploring this route.
+
+Currently, the width and height of the map are hard coded into the plan (Width = 20, Height = 20). If the agent has a belief about the size of the map, you can avoid hard coding these values: you can instead use variables to retrieve the values from the agent's belief base.
+
+In AgentSpeak, a variable starts with a capital letter, and we can use the application context of a plan to match variables against the agent's belief base. For example, given the belief base shown in the above image, we can write the following plan to print the agent's current position when the agent starts:
+
+// TODO: check if this makes sense, if not perhaps add an example plan that actually works (I haven't run the project)
+
+```
++!start : current_position(X,Y) <-
+   .print(X, " ", Y).
+```
+
+If the agent has a belief `current_position(12, 17)` when the agent starts, then the above plan would print `12 17`.
+
+Your second task is to update the `@ready_to_explore_plan` to avoid hard coding the size of the map.
+
+<!--
+- the context of the `@ready_to_explore_plan` so that the plan is only executed when the agent has a belief `env_size(X,Y)`. Now, the plan will be applicable only if the variables X, Y become bound to specific values based on a _ground_ belief (e.g. `env_size(100, 100)`) of the miner's belief base at run time.
+ - update the body of the plan such that the random position is computed based on variables X, Y instead of the hard coded values 20, 20.
+ -->
 
 <details>
 <summary>Solution</summary>
@@ -98,16 +175,24 @@ Check the agent's belief about the environment size (`env_size`) to update:
 </details>
 
 ### Task 3 - Reactive behavior
-An agent can react when a belief of its belief base is updated, added, or removed.
-    
-While exploring the mine environment, the miner can perceive gold located at its adjacent positions (perception scope radius: 1 grid). 
 
-Click on the cells of the Mining World GUI to add gold for the miner to discover, and inspect the beliefs of the agent at http://localhost:3272/ to see the addition of the belief `gold` when the miner perceives any gold. 
+You can click on the cells of the Mining World GUI to add gold nuggets to the map. While exploring the map, the miner agent can perceive gold nuggets are located in adjacent positions (the perception radius is 1 grid). 
 
-Create a `gold_plan` in `miner.asl` to enable the agent to _react to the addition of a belief_ `gold(X,Y)` by behaving as follows:
+When an agent receives a percept from the environment, the percept is reflected in the agent's beliefs. While your miner agent is exploring the map, you can again inspect its beliefs as shown above to see the addition of new `gold` beliefs.
+
+Your third task is to create a `@gold_perceived_plan` in [miner.asl](src/agt/miner.asl) to enable the agent to react when it perceives a new gold nugget. Note that you can use variables in triggering events as well, ex. the triggering event `+gold(X,Y)` will match X and Y to the coordinates of the cell in which the gold nugget was perceived.
+
+The `@gold_perceived_plan` plan should only be applicable if the agent is ready to explore (i.e., has the belief `ready_to_explore`) and the agent is not already carrying gold (i.e., does not have the belief `carrying_gold`). To implement such conditions in the plan's application context:
+- you can use _logical and_ (`&`) and _logical or_ (`|`) to specicy conjunctions or disjunctions of beliefs that need to hold
+- you can use the `not` keywords to specify that a belief should not hold (e.g., `not sunny`)
+
+// TODO: does the plan need to be atomic? if so, we can just give away the plan annotation with the atomic
+
+<!--
 - the plan is triggered by the addition of the belief `gold(X,Y)` to the belief base (triggering event: `+gold(X,Y)`);
 - the plan is applicable when the agent believes that it is `ready_to_explore` and (`&`) it is `not carrying_gold` (context);
 - the plan prints a message about the position (X,Y) of the discovery of gold (body).
+-->
 
 <details>
 <summary>Solution</summary>
