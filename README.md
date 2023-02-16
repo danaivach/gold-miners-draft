@@ -20,7 +20,9 @@ This tutorial is a simplified version of (...) developed by (...).
 
 ## How to run the project
 
-You can run the project directly in VS Code or from the command line with [Gradle 7.4](https://gradle.org/).
+You can run the project directly in VS Code or from the command line with [Gradle 7.4](https://gradle.org/) (see instructions below).
+
+TODO: describe briefly what happens when you run the project (what will the students see)
 
 ### How to run in VS Code
 
