@@ -192,8 +192,8 @@ Update the `work_on_base_plan_1` in `leader.asl` so that the leader [tells](http
       jia.random(Y,H-1) ; // action that unifies Y with a random number in [0, H-1]
       move_base(X,Y); // action that moves the base to position (X,Y)
       -+mine_base(X,Y); // removes the old belief mine_base(_,_) and adds a new belief mine_base(X,Y) 
-      .send(miner, tell, mine_base(X,Y));
-      !work_on_base.
+      .send(miner, tell, mine_base(X,Y)); // sends a message to miner telling that the mine_base is in position (X,Y)
+      !work_on_base. // creates the goal !work_on_base
 ```
 
 </details>
@@ -218,8 +218,8 @@ Update the `work_on_base_plan_1` in `leader.asl` so that the leader now [broadca
       jia.random(Y,H-1) ; // action that unifies Y with a random number in [0, H-1]
       move_base(X,Y); // action that moves the base to position (X,Y)
       -+mine_base(X,Y); // removes the old belief mine_base(_,_) and adds a new belief mine_base(X,Y) 
-      .boradcast(tell, mine_base(X,Y));
-      !work_on_base.
+      .boradcast(tell, mine_base(X,Y)); // broadcasts a message telling that the mine_base is in position (X,Y)
+      !work_on_base. // creates the goal !work_on_base
 ```
 
 </details>
