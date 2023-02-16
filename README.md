@@ -215,12 +215,20 @@ The `@gold_perceived_plan` plan should only be applicable if the agent is ready 
 </details>
 
 ### Task 4 - Proactive behavior 
-An agent can strive to achieve a goal when a goal is created.
-    
-Even though the agent perceives gold in the environment, it cannot achieve to pick it up and drop it in the mine base.
 
-Update `handle_gold_plan` so that it enables the miner to pursue the goal of a) picking the perceived gold, and b) dropping it in the base by behaving as as follows:
-- the plan is triggered by the creation of the goal `!handle_gold(gold(X,Y))` (triggering event: `+!handle_gold(gold(X,Y))`)
+<!--An agent can strive to achieve a goal when a goal is created.
+    
+Even though the agent perceives gold in the environment, it cannot achieve to pick it up and drop it in the mine base.-->
+
+Update the `@handle_gold_plan` to enable the miner agent to pick up gold and drop it in the depot.
+
+TODO:
+- explain how to create a goal to move to a location and that there is already a plan to achive this goal
+- available actions: pick drop
+- explain why the agent needs to confirm the pick and the drop and explain how
+
+<!--so that it enables the miner to pursue the goal of a) picking the perceived gold, and b) dropping it in the base by behaving as as follows:
+- the plan is triggered by the creation of the goal `!handle_gold(gold(X,Y))` (triggering event: `+!handle_gold(gold(X,Y))`)-->
 - the plan is applicable when the agent believes that it is `not ready_to_explore` and that `mine_base(BaseX, BaseY)`
 - the plan has a body that consists of the following:
   - the miner creates the goal of moving to the position of the gold (goal: `!moveTo`)
