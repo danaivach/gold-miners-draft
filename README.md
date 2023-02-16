@@ -4,7 +4,7 @@ Recently, rumours about the discovery of gold scattered around deep Carpathian w
 
 The tutorial already includes most of the code required by your team of miners. It only leaves out a few parts — just enough to give you a guided tour of some of the features of autonomous agents discussed during the lecture.
 
-This tutorial is a simplified version of (...) developed by (...).
+This tutorial is a simplified version of the winning implementation developed in the context of the 2nd [Multi-Agent Programming (CLIMA VII) Contest](https://multiagentcontest.org/).
 
 ## Table of Contents
 -   [How to run the project](#how-to-run-the-project)
@@ -15,9 +15,7 @@ This tutorial is a simplified version of (...) developed by (...).
     -  [Task 4 - Proactive behavior](#task-4---proactive-behavior)
     -  [Task 5 - Social ability](#task-5---social-ability)
     -  [Task 6 - Towards Multi-Agent Systems](#task-6---towards-multi-agent-systems)
-    -  Task 7?
--   [Submission]
-
+ 
 ## How to run the project
 
 You can run the project directly in VS Code or from the command line with [Gradle 7.4](https://gradle.org/).
