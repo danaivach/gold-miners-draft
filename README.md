@@ -176,9 +176,27 @@ Update `handle_gold_plan` so that it enables the miner to pursue the goal of a) 
 
 Agents can communicate with each other in order to share knowledge (i.e. beliefs) about the world.
     
-The environment now becomes more dynamic, since a `leader` agent is responsible for frequently moving the base of the mine (ADD WHY). As a result, the miner may fail to drop the gold at the base if the position of the base does not match the miner's initial belief (`mine_base(0,0). 
+The environment now becomes more dynamic, since a `leader` agent is responsible for frequently moving the base of the mine (ADD WHY). As a result, the miner may fail to drop the gold at the base if the position of the base does not match the miner's initial belief (`mine_base(0,0)). 
 
-Update the `work_on_base_plan_1` in `leader.asl` so that the leader _tells_ the miner about the new position of the base every time it moves the base.
+Update the `work_on_base_plan_1` in `leader.asl` so that the leader [tells](https://jason.sourceforge.net/api/jason/stdlib/send.html) the miner about the new position of the base every time it moves the base.
+
+<details>
+<summary>Solution</summary>
+
+```
+// leader.asl
+@work_on_base_plan_1
++!work_on_base : env_size(W,H) 
+   <- .wait(10000);
+      jia.random(X,W-1) ; // action that unifies X with a random number in [0, W-1]
+      jia.random(Y,H-1) ; // action that unifies Y with a random number in [0, H-1]
+      move_base(X,Y); // action that moves the base to position (X,Y)
+      -+mine_base(X,Y); // removes the old belief mine_base(_,_) and adds a new belief mine_base(X,Y) 
+      .send(miner, tell, mine_base(X,Y));
+      !work_on_base.
+```
+
+</details>
 
 ### Task 6 - Towards Multi-Agent Systems
     
@@ -186,5 +204,22 @@ More than one agents can be situated in the same environment
 
 Now 4 miners and 1 leader are situated in the mine environment. However, only the first miner receives messages from the leader, while the rest of the miners do not get informed about the position of the base. 
 
-Update the `work_on_base_plan_1` in `leader.asl` so that the leader now _broadcasts_ the position of the mine base to all the agents instead of only telling `miner`.
+Update the `work_on_base_plan_1` in `leader.asl` so that the leader now [broadcasts](https://jason.sourceforge.net/api/jason/stdlib/broadcast.html) the position of the mine base to all the agents instead of only telling `miner`.
 
+<details>
+<summary>Solution</summary>
+
+```
+// leader.asl
+@work_on_base_plan_1
++!work_on_base : env_size(W,H) 
+   <- .wait(10000);
+      jia.random(X,W-1) ; // action that unifies X with a random number in [0, W-1]
+      jia.random(Y,H-1) ; // action that unifies Y with a random number in [0, H-1]
+      move_base(X,Y); // action that moves the base to position (X,Y)
+      -+mine_base(X,Y); // removes the old belief mine_base(_,_) and adds a new belief mine_base(X,Y) 
+      .boradcast(tell, mine_base(X,Y));
+      !work_on_base.
+```
+
+</details>
