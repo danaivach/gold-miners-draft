@@ -8,7 +8,7 @@
     -  [Task 3 - Reactive behavior](#task-3---reactive-behavior)
     -  [Task 4 - Proactive behavior](#task-4---proactive-behavior)
     -  [Task 5 - Social ability](#task-5---social-ability)
-    -  [Task 6 - Towards Multi-Agent Systems]()
+    -  [Task 6 - Towards Multi-Agent Systems](#task-6---towards-multi-agent-systems)
 
 ## How to run the project
 Run with [Gradle 7.4](https://gradle.org/): 
