@@ -4,10 +4,10 @@
 -   [How to run the project](#how-to-run-the-project)
 -   [Gold Miners Tutorial](#gold-miners-tutorial)
     -  [Task 1 - Hello World](#task-1---hello-world)
-    -  [Task 2 - Beliefs about the world](#task-2---agent-beliefs-for-decoupling-the-agent-from-its-environment)
-    -  [Task 3 - Reactive behavior](#task-3---enable-the-agent-to-react-to-discovered-gold)
-    -  [Task 4 - Proactive behavior](#task-4---enable-the-agent-to-pursue-the-goal-of-picking-gold-and-dropping-gold-in-the-base)
-    -  [Task 5 - Social ability]()
+    -  [Task 2 - Beliefs about the world](#task-2---beliefs-about-the-world)
+    -  [Task 3 - Reactive behavior](#task-3---reactive-behavior)
+    -  [Task 4 - Proactive behavior](#task-4---proactive-behavior)
+    -  [Task 5 - Social ability](#task-5---social-ability)
     -  [Task 6 - Towards Multi-Agent Systems]()
 
 ## How to run the project
@@ -56,7 +56,9 @@ Upon initialization, the miner reacts to the creation of initial beliefs and goa
 
 </details>
 
-### Task 2 - Agent beliefs for decoupling the agent from its environment
+### Task 2 - Beliefs about the world
+An agent can update, add, or remove beliefs of its belief base at run time, so that its behavior remains decoupled details about the world.
+
 The miner agent reacts to the creation of the initial belief `ready_to_explore` by executing the `ready_to_explore_plan_1` (l.32-37). Based on the body of the plan, the miner behaves as follows:
 - it computes a random position (X,Y) within the mine environment;
 - it creates the goal `!explore(X,Y)` for exploring the route to (X,Y) while looking for gold.
@@ -93,7 +95,9 @@ Check the syntax of the agent's belief about the environment size (`env_size`) t
 
 </details>
 
-### Task 3 - Enable the agent to react to discovered gold
+### Task 3 - Reactive behavior
+An agent can react when a belief of its belief base is updated, added, or removed.
+    
 While exploring the mine environment, the miner can perceive gold located at its adjacent positions (perception scope radius: 1 grid). 
 
 Click on the cells of the Mining World GUI to add gold for the miner to discover, and inspect the beliefs of the agent at http://localhost:3272/ to see the addition of the belief `gold` when the miner perceives any gold. 
@@ -122,22 +126,63 @@ Create a `gold_plan` in `miner.asl` to enable the agent to _react to the additio
 
 </details>
 
-### Task 4 - Enable the agent to pursue the goal of picking gold and dropping gold in the base 
+### Task 4 - Proactive behavior 
+An agent can strive to achieve a goal when a goal is created.
+    
 Even though the agent perceives gold in the environment, it cannot achieve to pick it up and drop it in the mine base.
 
-Update `handle_gold_plan` that enables the agent to pursue the goal of picking the perceived gold and drop it in the base by behaving as as foolows:
+Update `handle_gold_plan` so that it enables the miner to pursue the goal of a) picking the perceived gold, and b) dropping it in the base by behaving as as follows:
 - the plan is triggered by the creation of the goal `!handle_gold(gold(X,Y))` (triggering event: `+!handle_gold(gold(X,Y))`)
-- the plan is applicable when the agent is []
-- Create a plan pickUp(gold(X,Y)) ->   !moveTo(X,Y), pick, !ensure_gold, !moveTo(BX,BY), !ensure_base, drop. 
-- Update +gold to create a goal, pickUp(gold(X,Y))
+- the plan is applicable when the agent believes that it is `not ready_to_explore` and that `mine_base(BaseX, BaseY)`
+- the plan has a body that consists of the following:
+  - the miner creates the goal of moving to the position of the gold (goal: `!moveTo`)
+  - the miner picks the gold (action: `pick`)
+  - the miner creates the goal of confirming that the gold has been picked (goal: `!confirm_pick`)
+  - the miner creates the goal of moving to the position of the base (goal: `!moveTo`)
+  - the miner creates the goal of confirming that the base is there (goal: `!confirm_base`)
+  - the miner drops the gold at the base (action: `drop`)
+  - the miner creates the goal of handling other gold pieces (goal: `!choose_gold`)
+    
+<details>
+<summary>Solution</summary>
 
-###Task 5 (TBD)
-NOW dynamic base - try your code, it should fail
-We provide failure plan for 
-Create a plan on the leader to react to +base_position() by informing the miner about the base_position.
+```
+// miner.asl
 
-### Task 6 (TBD)
-NOW many miners 
-try your code, it should fail for all but 1 agent
-Update the previous plan on the leader so that it broadcasts.
+/* 
+ * Plan for achieving the goal !handle(gold(X,Y))
+ * The agent strives to achieve the goal by a) picking the perceived gold, and b) dropping it in the base
+ * Triggering event: creation of goal !handle(gold(X,Y))
+ * Context: the miner believes that the mine base is in position (BaseX,BaseY) and it is not ready_to_explore
+ */
++!handle(gold(X,Y)) 
+  :  not ready_to_explore & mine_base(BaseX,BaseY)
+  <- .print("Handling ",gold(X,Y)," now.");
+     !move_to(X,Y); // creates the goal of moving to the position of the gold
+     pick; // action that picks the gold
+     !confirm_pick; // creates the goal of confirming that the gold has been picked
+     !move_to(BaseX,BaseY); // creates the goal of moving to the position of the base
+     !confirm_base; // creates the goal of confirming that the base is there
+     drop; // action that drops the gold at the base
+     .print("Finish handling ",gold(X,Y));
+     !!choose_gold. // creates the goal of handling other gold pieces
+```
+
+</details>
+
+### Task 5 - Social Ability
+
+Agents can communicate with each other in order to share knowledge (i.e. beliefs) about the world.
+    
+The environment now becomes more dynamic, since a `leader` agent is responsible for frequently moving the base of the mine (ADD WHY). As a result, the miner may fail to drop the gold at the base if the position of the base does not match the miner's initial belief (`mine_base(0,0). 
+
+Update the `work_on_base_plan_1` in `leader.asl` so that the leader _tells_ the miner about the new position of the base every time it moves the base.
+
+### Task 6 - Towards Multi-Agent Systems
+    
+More than one agents can be situated in the same environment
+
+Now 4 miners and 1 leader are situated in the mine environment. However, only the first miner receives messages from the leader, while the rest of the miners do not get informed about the position of the base. 
+
+Update the `work_on_base_plan_1` in `leader.asl` so that the leader now _broadcasts_ the position of the mine base to all the agents instead of only telling `miner`.
 
