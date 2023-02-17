@@ -145,8 +145,6 @@ Currently, the width and height of the map are hard coded into the plan (Width =
 
 In AgentSpeak, a variable starts with a capital letter, and we can use the application context of a plan to match variables against the agent's belief base. For example, given the belief base shown in the above image, we can write the following plan to print the agent's current position when the agent starts:
 
-// TODO: check if this makes sense, if not perhaps add an example plan that actually works (I haven't run the project)
-
 ```
 +!start : current_position(X,Y) <-
    .print(X, " ", Y).
