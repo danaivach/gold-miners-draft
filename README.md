@@ -41,34 +41,27 @@ Optional reading material: [<u>Chapter 4.1</u> of Boissier, O., Bordini, R. H., 
  
 ## How to run the project
 
-You can run the project directly in VS Code or from the command line with [Gradle 7.4](https://gradle.org/).
-
-### How to run in VS Code
-
-In VSCode, click the Gradle Side Bar elephant, and navigate through the Gradle Tasks to run one of the `jacamo` tasks:
+You can run the project directly in VS Code or from the command line with [Gradle 7.4](https://gradle.org/). The available Gradle tasks are:
 
 - For Tasks 1-4: `task_1_4`
 - For Task 5: `task5`
 - For Task 6: `task6`
 
+### How to run in VS Code
+
+In VSCode, click the Gradle Side Bar elephant, and navigate through the Gradle Tasks to run one of the `jacamo` tasks:
+
 <img src="doc/vscode-gradle-view-annotated.png?raw=true" width="200">
 
 ### Command Line (MacOS/Linux/Windows)
 
-- MacOS and Linux: run the following commands
-- Windows: replace `./gradlew` with `gradlew.bat`
-
-For Tasks 1-4:
+- MacOS and Linux: Use the command `./gradlew` to run one of the Gradle Tasks, e.g.:
 ```shell
 ./gradlew task_1_4
 ```
-For Task 5:
+- Windows: replace Use the command `gradlew.bat` to run one of the Gradle Tasks, e.g.:
 ```shell
-./gradlew task_5
-```
-For Task 6: 
-```shell
-./gradlew task_6
+gradlew.bat task_1_4
 ```
 
 ## Gold Miners Tutorial
