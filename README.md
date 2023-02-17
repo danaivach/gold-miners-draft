@@ -97,7 +97,7 @@ In this tutorial, we will only use plan annotations to refer to plans easily. Th
 In this tutorial, we will use the following types of triggering events:
 - `+!<goal>`: signals the creation of a goal, ex. `+!start`;
 - `-!<goal>`: signals the deletion of a goal, ex. when the execution of an action in the plan body has failed;
-- `+<belief>`: this event signals the addition of a belief to the agent's belief base, ex. `+ready_to_explore`;
+- `+<belief>`: signals the addition of a belief to the agent's belief base, ex. `+ready_to_explore`;
 - `-<belief>`: signals the deletion of a belief from the agent's belief base, ex. `-ready_to_explore`.
 
 With this minimal information, you are now ready to program your first agent!
