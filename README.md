@@ -120,7 +120,7 @@ To print a statement, you can use the following action — and note that this is
 
 /* 
  * Plan for achieving the goal !start 
- * Triggering event: Creation of goal !start
+ * Triggering event: creation of goal !start
  * Context: true (the plan is always applicable)
  * Body: prints "Hello world of miners!"
 */
