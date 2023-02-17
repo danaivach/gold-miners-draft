@@ -38,7 +38,6 @@ depot(0,0). // the agent believes that the depot is located at (0,0)
    jia.random(Y,H) ; // action that unifies Y with a random number in [0, H]
    move_depot(X,Y); // action that moves the depot at (X,Y)
    -+depot(X,Y); // deletes the old belief depot(_,_) and adds a new belief depot(X,Y) 
-   .broadcast(tell, depot(X,Y)); // action that tells the miner that the depot is located at (X,Y)
    !manage_depot. // creates goal !manage_depot
 /********* START OF YOUR IMPLEMENTATION FOR TASKS 5 & 6 *********/
 

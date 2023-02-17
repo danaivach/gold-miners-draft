@@ -40,9 +40,9 @@ depot(0,0). // the agent believes that the depot is located at (0,0)
  * Body: computes a random location (X,Y) and creates the goal to explore the route to it 
 */
 @ready_to_explore_plan
-+ready_to_explore : map_size(W,H) <-  
-   jia.random(X,W) ; // action that unifies X with a random number in [0, W]
-   jia.random(Y,H) ; // action that unifies Y with a random number in [0, H]
++ready_to_explore : true <-  
+   jia.random(X,20) ; // action that unifies X with a random number in [0, W]
+   jia.random(Y,20) ; // action that unifies Y with a random number in [0, H]
    .print("I will create the goal to explore (",X,",", Y,")");
    !explore(X,Y) . // creates goal explore(X,Y)
 /********* END OF YOUR IMPLEMENTATION FOR TASK 2 *********/
@@ -60,20 +60,8 @@ depot(0,0). // the agent believes that the depot is located at (0,0)
    -+ready_to_explore. // deletes the old belief ready_to_explore and adds a new belief ready_to_explore
 
 /********* START OF YOUR IMPLEMENTATION FOR TASK 3 *********/
-/* 
- * Plan for reacting to the addition of the belief gold(X,Y) 
- * The plan is required for reacting to the perception of gold
- * Triggering event: addition of belief gold(X,Y)
- * Context: the agent believes it is ready to explore, and does not believe it is already carrying gold
- * Body: deletes the belief that the agent is ready to explore and creates the goal to initialize the gold handling
-*/
-@gold_perceived_plan[atomic]           
-+gold(X,Y) : ready_to_explore & not carrying_gold <- 
-   .print("Gold perceived: ",gold(X,Y));
-   -ready_to_explore;
-   !init_handle(gold(X,Y)).
+// You can add your solution here
 /********* END OF YOUR IMPLEMENTATION FOR TASK 3 *********/
-
 
 /* 
  * Plan for reacting to the creation of the goal !init_handle(gold(X,Y))
@@ -100,7 +88,6 @@ depot(0,0). // the agent believes that the depot is located at (0,0)
 +!init_handle(gold(X,Y)) : true <- 
    !!handle(Gold). // creates goal !handle(gold(X,Y))
 
-/********* START OF YOUR IMPLEMENTATION FOR TASK 4 *********/
 /* 
  * Plan for reacting to creation of goal !handle(gold(X,Y))
  * The plan is required for collecting a gold nugget and droppping it at the depot
@@ -115,12 +102,7 @@ depot(0,0). // the agent believes that the depot is located at (0,0)
 +!handle(gold(X,Y)) : not ready_to_explore & depot(DepotX,DepotY) <- 
    .print("Handling ", gold(X,Y), "now");
    /********* START OF YOUR IMPLEMENTATION FOR TASK 4 *********/
-   !move_to(X,Y); // creates goal !move(X,Y)
-   pick; // action that picks a gold nugget when the agent is in the location of a gold nugget
-   !confirm_pick; // creates goal !confirm_pick
-   !move_to(DepotX,DepotY); // creates goal !move(DepotX,DepotY)
-   !confirm_depot; // creates goal !confirm_depot
-   drop; // action that drops a gold nugget when the agent is in the location of the depot
+   // You can add your solution here
    /********* END OF YOUR IMPLEMENTATION FOR TASK 4 *********/
    .print("Finish handling ",gold(X,Y));
    !!choose_gold. // creates goal !choose_gold
