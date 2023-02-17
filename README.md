@@ -235,7 +235,11 @@ Your miner agent is already equipped with the following plans, which you can reu
 - `@confirm_pick_plan` : enables the agent to confirm that it is in the position of a gold nugget and it is carrying the gold nugget (i.e., the gold nugget was picked up);
 - `@confirm_depot_plan` : enables the agent to confirm that it is at the depot; later in the tutorial, the depot will be mobile (meaning that the location known by the agent might be outdated), which is why the agent needs to check it arrived at the right location.
 
-In [miner.asl](src/agt/miner.asl), the goal of handling gold is created in the body of the `@init_handle_plan` (lines TBA) — a plan dedicated to the initialization of the gold handling process. Update your `@gold_perceived_plan` from Task 3 such that, instead of printing the position of the gold nugget, the plan creates a sub-goal that triggers `@init_handle_plan`. This will initiate the gold handling process and will eventually generate the triggering event `+!handle(gold(X,Y))`, which the agent will strive to achieve by executing your `@handle_gold_plan`.
+In [miner.asl](src/agt/miner.asl), the goal of handling gold is created in the body of the `@init_handle_plan` (lines TBA) — a plan dedicated to the initialization of the gold handling process. Update your `@gold_perceived_plan` from Task 3 such that, instead of printing the position of the gold nugget, the plan: 
+- deletes the belief that the agent is ready to explore. Note that for deleting a belief you need to use the `-` operator. For example, we can write `-sunny` to delete the belief `sunny`;
+- creates a sub-goal that triggers `@init_handle_plan`. 
+
+This will initiate the gold handling process and will eventually generate the triggering event `+!handle(gold(X,Y))`, which the agent will strive to achieve by executing your `@handle_gold_plan`.
                               
 <details>
 <summary>Solution</summary>
