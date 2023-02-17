@@ -31,7 +31,8 @@ Optional reading material for a brief introduction to agent-oriented programming
 │   │   ├── miner.asl // agent program of miner agents
 │   │   ├── leader.asl // agent program of the leader agent
 │   │   └── inc
-│   │       └── exploration.asl // program that supports miner agents in exploring the grid environment
+│   │       ├── exploration.asl // program that supports miner agents in exploring the grid environment
+│   │       └── gold_selection.asl // program that supports miner agents in choosing gold nuggets to handle
 │   └── env
 ├── mas_1_4.jcm // the configuration file of the JaCaMo application for tasks 1-4
 ├── mas_5.jcm // the configuration file of the JaCaMo application for task 5
