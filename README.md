@@ -4,10 +4,18 @@ Recently, rumours about the discovery of gold scattered around deep Carpathian w
 
 The tutorial already includes most of the code required by your team of miners. It only leaves out a few parts — just enough to give you a guided tour of some of the features of autonomous agents discussed during the lecture.
 
-This tutorial is a simplified version of the winning implementation developed in the context of the 2nd [Multi-Agent Programming (CLIMA VII) Contest](https://multiagentcontest.org/).
+This tutorial is a simplified version of the winning implementation developed in the context of the 2nd [Multi-Agent Programming (CLIMA VII) Contest](https://multiagentcontest.org/). No submission is required, but feel free to [send me](mailto:danai.vachtsevanou@unisg.ch) your questions.
+
+Recommended editor: [Visual Studio Code](https://code.visualstudio.com/)
+
+Available VSCode syntax highlighters: 
+- For AgentSpeak: [code-mas2j](https://marketplace.visualstudio.com/items?itemName=tkampik.code-mas2j)
+- For JaCaMo: [code-jcm](https://marketplace.visualstudio.com/items?itemName=u473t8.code-jcm)
+
+Optional reading material: [<u>Chapter 4.1</u> of Boissier, O., Bordini, R. H., Hubner, J., & Ricci, A. (2020). Multi-agent oriented programming: programming multi-agent systems using JaCaMo. Mit Press.](https://mitpress.ublish.com/book/multi-agent-oriented-programming-programming-multi-agent-systems-using-jacamo)
 
 ## Table of Contents
--   [Project structure]()
+-   [Project structure](#project-structure)
 -   [How to run the project](#how-to-run-the-project)
 -   [Gold Miners Tutorial](#gold-miners-tutorial)
     -  [Task 1 - Hello World](#task-1---hello-world)
@@ -16,6 +24,20 @@ This tutorial is a simplified version of the winning implementation developed in
     -  [Task 4 - Proactive behavior](#task-4---proactive-behavior)
     -  [Task 5 - Social ability](#task-5---social-ability)
     -  [Task 6 - Towards Multi-Agent Systems](#task-6---towards-multi-agent-systems)
+
+## Project structure
+```
+├── src
+│   ├── agt
+│   │   ├── miner.asl // agent program of miner agents
+│   │   ├── leader.asl // agent program of the leader agent
+│   │   └── inc
+│   │       └── exploration.asl // program that supports miner agents in exploring the grid environment
+│   └── env
+├── mas_1_4.jcm // the configuration file of the JaCaMo application for tasks 1-4
+├── mas_5.jcm // the configuration file of the JaCaMo application for task 5
+└── mas_6.jcm // the configuration file of the JaCaMo application for task 6
+```
  
 ## How to run the project
 
@@ -25,7 +47,10 @@ You can run the project directly in VS Code or from the command line with [Gradl
 
 TODO: add instructions
 
-### Command Line (MacOS/Linux)
+### Command Line (MacOS/Linux/Windows)
+
+- MacOS and Linux: run the following commands
+- Windows: replace `./gradlew` with `gradlew.bat`
 
 For Tasks 1-4:
 ```shell
@@ -33,26 +58,11 @@ For Tasks 1-4:
 ```
 For Task 5:
 ```shell
-./gradlew task_6
+./gradlew task_5
 ```
 For Task 6: 
 ```shell
 ./gradlew task_6
-```
-
-### Command Line (Windows)
-
-For Tasks 1-4:
-```shell
-gradlew.bat task_1_4
-```
-For Task 5:
-```shell
-gradlew.bat task_5
-```
-For Task 6: 
-```shell
-gradlew.bat task_6
 ```
 
 ## Gold Miners Tutorial
