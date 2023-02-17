@@ -74,18 +74,14 @@ public class MiningPlanet extends Artifact {
         updateAgPercept();
     }
 
-    @OPERATION void base_at(int x, int y, OpFeedbackParam<Boolean> state) {
+    @OPERATION void depot_at(int x, int y, OpFeedbackParam<Boolean> state) {
         if (sleep > 0) await_time(sleep);
         Location expectedLocation = new Location(x, y);
         Location actualLocation = model.getDepot();
-        System.out.println(expectedLocation);
-        System.out.println(actualLocation);
         if (expectedLocation.x == actualLocation.x && expectedLocation.y == actualLocation.y) {
-            System.out.println(true);
             state.set(true);
         }
         else {
-            System.out.println(false);
             state.set(false);
         }
     }
@@ -112,7 +108,7 @@ public class MiningPlanet extends Artifact {
                     view.udpateCollectedGolds();
                 }
             }
-            defineObsProperty("env_size", model.getWidth(), model.getHeight());
+            defineObsProperty("map_size", model.getWidth() -1, model.getHeight() -1);
             //defineObsProperty("depot", simId, model.getDepot().x, model.getDepot().y);
             defineObsProperty("current_position", -1, -1);
             updateAgPercept();
@@ -158,7 +154,7 @@ public class MiningPlanet extends Artifact {
         //view.update();
     }
 
-    private static Term gold     = new Atom("gold");
+    //private static Term gold     = new Atom("gold");
     private static Term obstacle = new Atom("obstacle");
 
     private void updateAgPercept(int x, int y) {

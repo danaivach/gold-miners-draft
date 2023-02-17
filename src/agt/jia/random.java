@@ -33,7 +33,7 @@ public class random extends DefaultInternalAction {
 
                 // we always have a next random number
                 public boolean hasNext() {
-                    return i < maxIter && ts.getUserAgArch().isRunning();
+                    return i < maxIter ;
                 }
 
                 public Unifier next() {

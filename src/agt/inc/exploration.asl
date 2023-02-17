@@ -5,9 +5,19 @@ last_direction(null). // the agent initially believes that it hasn't moved previ
  * Plans for exploring the environment The agent explores the environment by going near to a target position (X,Y).
  * To detect whether gold is placed in the target position is suffices that the agent visits an adjacent position.
 */
+    
 
-      
-+cell(X,Y,gold) <- +gold(X,Y).
+/* 
+ * Plan for reacting to the addition of the belief near(X,Y) to the agent's belief base
+ * The plan is required during exploration so that when the agent reaches the location that it had decided to explore, 
+ * it becomes again ready to explore another location
+ * Triggering event: addition of belief near(X,Y)
+ * Context : ready_to_explore
+ * Body: removes the old belief ready_to_explore and adds a new belief ready_to_explore
+*/
+@near_plan
++near(X,Y) : ready_to_explore <- 
+   -+ready_to_explore. // removes the old belief ready_to_explore and adds a new belief ready_to_explore
 
 /* 
  * Plan for reacting to the creation of goal !explore(X,Y)
@@ -27,9 +37,15 @@ last_direction(null). // the agent initially believes that it hasn't moved previ
  * Context : the agent believes it is in position (SourceX,SourceY) which is adjacent to the target position (X,Y)
 */
 @go_near_plan_1
-+!go_near(X,Y) : (current_position(SourceX,SourceY) & jia.neighbour(SourceX,SourceY,X,Y))
++!go_near(X,Y) : current_position(SourceX,SourceY) & jia.neighbour(SourceX,SourceY,X,Y)
    <- .print("I am at ", "(",SourceX,",", SourceY,")", " which is adjacent to (",X,",", Y,")");
       +near(X,Y). // adds a belief that the agent is near(X,Y)
+
+// I am near to some location if the last action was skip
+// (meaning that there are no paths to there)
++!go_near(X,Y) : current_position(SourceX,SourceY) & last_dir(skip)
+   <- .print("I am at ", "(",SourceX,",", SourceY,")", " and I can't get to' (",X,",", Y,")");
+      +near(X,Y).
 
 /* 
  * Plan for reacting to the creation of goal !go_near(X,Y)

@@ -1,229 +1,236 @@
 // miner agent
 
 /*
- * By Joao Leite
- * Based on implementation developed by Rafael Bordini, Jomi Hubner and Maicon Zatelli
+ * Based on implementation developed by Joao Leite which extends the work of
+ * Rafael Bordini, Jomi Hubner and Maicon Zatelli
  */
 
 /* Initial beliefs */
-ready_to_explore. // the miner initially believes that it is ready to explore the environment
-mine_base(0,0). // the miner initially believes that the base of the mine is in position (0,0)
+ready_to_explore. // the agent believes that it is ready to explore the woods for gold
+depot(0,0). // the agent believes that the depot is located at (0,0)
 
 /* Initial goals */
-!start. // the miner initially has the goal to start
+!start. // the agent has an initial goal to start
+
+
+/********* START OF YOUR IMPLEMENTATION FOR TASK 1 *********/
+// You can add your solution here
+/********* END OF YOUR IMPLEMENTATION FOR TASK 1 *********/
 
 /* 
- * Plan for achieving the goal !start 
- * Triggering event: Creation of goal !start
+ * Plan for reacting to the deletion of the goal !start
+ * The plan is required for handling failures until you implement Task 1 
+ * Triggering event: failure of goal !start
  * Context: true (the plan is always applicable)
+ * Body: waits and creates the goal !start 
 */
-@start_plan 
-+!start : true 
-   <- .print("Implement Task 1"). 
+@handle_missing_start_plan 
+-!start : true <-
+   .wait(2000); // waits 2000ms
+   !start. // creates goal !start (the agent re-tries to !start)
+
+
+/********* START OF YOUR IMPLEMENTATION FOR TASK 2 *********/
+/* 
+ * Plan for reacting to the addition of the belief ready_to_explore to the agent's belief base
+ * The plan is required for exploring the woods for gold
+ * Triggering event: addition of belief ready_to_explore
+ * Context (before Task 2): true (the plan is always applicable)
+ * Context (after Task 2): the agent has a belief about the size of the map
+ * Body: the agent computes a random location (X,Y) and creates the goal to explore the route to it 
+*/
+@ready_to_explore_plan
++ready_to_explore : map_size(W,H) <-  
+   jia.random(X,W) ; // action that unifies X with a random number in [0, W]
+   jia.random(Y,H) ; // action that unifies Y with a random number in [0, H]
+   .print("I will create the goal to explore (",X,",", Y,")");
+   !explore(X,Y) . // creates goal explore(X,Y)
+/********* END OF YOUR IMPLEMENTATION FOR TASK 2 *********/
 
 /* 
- * Plan for reacting to a new belief ready_to_explore. 
- * The miner reacts by deciding to explore the route to a random position in the environment.
- * Triggering event: Addition of belief ready_to_explore
- * Context (before Task 1): true (the plan is always applicable)
- * Context (after Task 1): the agent has a belief about the size of the environment 
- * Body: the miner computes a random position (X,Y) and creates the goal to explore the route to it 
-*/
-@ready_to_explore_plan_1
-/* Template
- +ready_to_explore : true 
-   <-  
-      jia.random(X,20) ; // action that unifies X with a random number in [0, 20]
-      jia.random(Y,20) ; // action that unifies Y with a random number in [0, 20]
-      .print("I will create the goal to explore (",X,",", Y,")");
-      !explore(X,Y) . // creates goal explore(X,Y)
-*/
-+ready_to_explore : env_size(W,H)
-   <-  
-      jia.random(X,W-1) ; // action that unifies X with a random number in [0, W-1]
-      jia.random(Y,H-1) ; // action that unifies Y with a random number in [0, H-1]
-      .print("I will create the goal to explore (",X,",", Y,")");
-      !explore(X,Y) . // creates goal explore(X,Y)
-
-/* 
- * Plan for reacting to a new belief ready_to_explore
- * The miner reacts by waiting and becoming again ready to explore.
- * Triggering event: Addition of belief ready_to_explore
+ * Plan for reacting to the addition of the belief ready_to_explore to the agent's belief base
+ * The plan is required in case the agent does not have a belief about the size of the map after you implement Task 2 
+ * Triggering event: addition of belief ready_to_explore
  * Context : true (the plan is always applicable)
  * Body: waits and removes the old belief ready_to_explore and adds a new belief ready_to_explore
 */
-@ready_to_explore_plan_2
-+ready_to_explore  : true
-   <- .wait(100); // waits 100ms
-      -+ready_to_explore. // removes the old belief ready_to_explore and adds a new belief ready_to_explore
+@ready_to_explore_unknown_map_plan
++ready_to_explore  : true <- 
+   .wait(100); // waits 100ms
+   -+ready_to_explore. // removes the old belief ready_to_explore and adds a new belief ready_to_explore
 
+/********* START OF YOUR IMPLEMENTATION FOR TASK 3 *********/
 /* 
- * Plan for reacting to a new belief near(X,Y)
- * The miner reacts by becoming again ready to explore
- * Triggering event: Addition of belief near(X,Y)
- * Context : ready_to_explore
- * Body: removes the old belief ready_to_explore and adds a new belief ready_to_explore
+ * Plan for reacting to the addition of the belief gold(X,Y) to the agent's belief base
+ * The plan is required for reacting to the perception of gold
+ * Triggering event: addition of belief gold(X,Y)
+ * Context : the agent believes it is ready to explore, and does not believe it is already carrying gold
+ * Body: waits and removes the old belief ready_to_explore and adds a new belief ready_to_explore
 */
-@near_plan
-+near(X,Y) : ready_to_explore 
-   <- -+ready_to_explore. // removes the old belief ready_to_explore and adds a new belief ready_to_explore
-
-/* 
- * Plan for achieving the goal !move_to(X,Y)
- * Triggering event: creation of goal !move_to(X,Y)
- * Context: the miner is already in position (X,Y)
- */
- @move_to_plan_1
-+!move_to(X,Y) : current_position(X,Y)
-   <- .print("I've reached ",X,"x",Y).
-
-/* 
- * Plan for achieving the goal !move_to(X,Y)
- * Triggering event: creation of goal !move_to(X,Y)
- * Context: the miner is not in position (X,Y)
- */
-@move_to_plan_2
-+!move_to(X,Y) : not current_position(X,Y)
-   <- 
-      !next_step(X,Y); // creates a goal to take one more step towards (X,Y)
-      !move_to(X,Y). // creates a goal to move to (X,Y)
-
-
-// SOLUTION TASK 3
-/*
-@gold_plan[atomic]           // atomic: so as not to handle another event until handle gold is initialised
-+gold(X,Y)
-  :  not carrying_gold & ready_to_explore
-  <- .print("Gold perceived: ",gold(X,Y)).
-*/
-
-// SOLUTION TASK 4 (1/2)
-@gold_plan[atomic]           // atomic: so as not to handle another event until handle gold is initialised
-+gold(X,Y) 
-   : not carrying_gold & ready_to_explore
-   <- -ready_to_explore;
-     .print("Gold perceived: ",gold(X,Y));
-     !init_handle(gold(X,Y)).
+@gold_plan[atomic]           
++gold(X,Y) : ready_to_explore & not carrying_gold <- 
+   .print("Gold perceived: ",gold(X,Y));
+   -ready_to_explore;
+   !init_handle(gold(X,Y)).
+/********* END OF YOUR IMPLEMENTATION FOR TASK 3 *********/
 
 
 /* 
- * Plan for achieving the goal !init_handle(Gold), i.e. !init_handle(gold(X,Y))
- * The agent strives to achieve the goal by 1) removing any goals it currently has 
- * for moving to any position that is irrelevant to the position of the gold, and 
- * 2) creating the goal to handle the Gold. 
+ * Plan for reacting to the creation of the goal !init_handle(gold(X,Y))
+ * The plan is required for initializing the process of handling gold 
+ * when the agent had a goal of going near an irrelevant location
  * Triggering event: creation of goal !init_handle(Gold)
- * Context: the miner has a goal to move to a position 
+ * Context: the agent believes that it has the goal to go near a location
+ * Body: deletes any goals for going near any location, and creates the goal to handle the gold
  */
-@init_handle_plan_1[atomic]
-+!init_handle(Gold)
-  :  .desire(go_near(_,_)) // the miner has a goal to go near to any position
-  <- .print("Dropping near(_,_) desires and intentions to handle ",Gold);
-     .drop_desire(go_near(_,_)); // action that removes the goal of going near to any position
-     !!handle(Gold).
+@init_handle_plan[atomic]
++!init_handle(gold(X,Y)) : .desire(go_near(_,_)) <- 
+   .print("I will stop moving to handle ", gold(X,Y));
+   .drop_desire(go_near(_,_)); // action that deletes the goal of going near a location
+   !!handle(gold(X,Y)). // creates goal !handle(gold(X,Y))
 
 /* 
- * Plan for achieving the goal !init_handle(Gold), i.e. !init_handle(gold(X,Y))
- * The agent strives to achieve the goal creating the goal to handle the Gold. 
+ * Plan for reacting to the creation of the goal !init_handle(gold(X,Y))
+ * The plan is required for initializing the process of handling gold 
  * Triggering event: creation of goal !init_handle(Gold)
  * Context: true (the plan is always applicable)
- */   
-@init_handle_plan_2[atomic]
-+!init_handle(Gold)
-  :  true
-  <- !!handle(Gold). // creates the goal !handle(Gold), i.e. !handle(gold(X,Y))
+ * Body: creates the goal to handle the gold 
+ */
+@init_handle_not_moving_plan[atomic]
++!init_handle(gold(X,Y)) : true <- 
+   !!handle(Gold). // creates goal !handle(gold(X,Y))
+
+/********* START OF YOUR IMPLEMENTATION FOR TASK 4 *********/
+/* 
+ * Plan for reacting to creation of goal !handle(gold(X,Y))
+ * The plan is required for collecting a gold nugget and droppping it at the depot
+ * Triggering event: creation of goal handle(Gold)
+ * Context: the agent does not believe it is ready to explore, and 
+ * it believes that the depot is location at (DepotX,DepotY)
+ * Body: the agent 1) moves to the location of a gold nugget, 2) picks the nugget,
+ * 3) confirms that picking was successful, 4) moves to the location of the depot,
+ * 5) confirms that it moved to the location of the depot successfully, and
+ * 6) drops the nugget at the depot, and 7) chooses another perceived gold to handle
+ */
++!handle(gold(X,Y)) : not ready_to_explore & depot(DepotX,DepotY) <- 
+   .print("Handling ", gold(X,Y), "now");
+   !move_to(X,Y); // creates goal !move(X,Y)
+   pick; // action that picks a gold nugget when the agent is in the location of a gold nugget
+   !confirm_pick; // creates goal !confirm_pick
+   !move_to(DepotX,DepotY); // creates goal !move(DepotX,DepotY)
+   !confirm_depot; // creates goal !confirm_depot
+   drop; // action that drops a gold nugget when the agent is in the location of the depot
+   .print("Finish handling ",gold(X,Y));
+   !!choose_gold. // creates goal !choose_gold
+/********* END OF YOUR IMPLEMENTATION FOR TASK 4 *********/
 
 /* 
- * Plan for achieving the goal !handle(gold(X,Y))
- * The agent strives to achieve the goal by 1) movin 
- * Triggering event: creation of goal !init_handle(Gold)
+ * Plan for reacting to the creation of goal !move_to(X,Y)
+ * The plan is required for moving to the location (X,Y)
+ * Triggering event: creation of goal !move_to(X,Y)
+ * Context: the agent believes it is located at (X,Y)
+ * Body: the agent announces that it has reached the location (X,Y)
+ */
+ @move_to_plan
++!move_to(X,Y) : current_position(X,Y) <- 
+   .print("I've reached (",X,",",Y,")").
+
+/* 
+ * Plan for reacting to the creation of goal !move_to(X,Y)
+ * The plan is required for confirming that it is in the position of a gold nugget and it is carrying the gold nugget
+ * Triggering event: creation of goal !move_to(X,Y)
+ * Context: the agent does not believe that it is located at (X,Y)
+ * Body: the agent creates the goal to make 1 more step towards (X,Y), and creates goal !move_to(X,Y)
+ */
+@move_to_different_location_plan
++!move_to(X,Y) : not current_position(X,Y) <- 
+   !next_step(X,Y); // creates goal !next_step(X,Y)
+   !move_to(X,Y). // creates a goal !move_to(X,Y)
+
+/* 
+ * Plan for reacting to the creation of goal !confirm_pick
+ * The plan is required for confirming that the agent is at the location of a gold nugget and 
+ * it is carrying a nugget
+ * Triggering event: creation of goal !confirm_pick
+ * Context: the agent believes it is located at the location (X,Y) of a gold nugget
+ * Body: the agent checks if it is carrying gold, and deletes the belief that gold is located at (X,Y)
+ */
+ @confirm_pick_plan
++!confirm_pick : current_position(X,Y) & gold(X,Y) <- 
+   ?carrying_gold; // tests if the agent is carrying gold
+   .abolish(gold(X,Y)); // deletes the belief that gold is located at (X,Y)
+   .print("Successfully picked gold").
+
+/* 
+ * Plan for reacting to the creation of goal !confirm_depot
+ * The plan is required for confirming that the agent is at the location of the depot
+ * Triggering event: creation of goal !confirm_depot
+ * Context: the agent believes it is at the location (X,Y) 
+ * Body: the agent checks it is at the location of the depot, and creates goal !confirm_depot(State) 
+ */
+@confirm_depot_plan
++!confirm_depot : current_position(X,Y) <- 
+   depot_at(X,Y,State);
+   !confirm_depot(State).
+
+/* 
+ * Plan for reacting to the creation of goal !confirm_depot(State)
+ * The plan is required for confirming that the agent is at the location of the depot
+ * Triggering event: creation of goal !confirm_depot(State)
+ * Context: the agent believes it is at the location (X,Y) of the depot
+ * Body: the agent announces that is has successfully dropped the gold nugget
+ */
+@confirm_depot_right_location_plan
++!confirm_depot(State) : State <- 
+   .print("Successfully reached depot").
+
+/* 
+ * Plan for reacting to the deletion of goal !confirm_depot(State)
+ * The plan is required for confirming that the agent is at the location of the depot,
+ * if previously it failed to confirm this
+ * Triggering event: deletion of goal !confirm_depot(State)
+ * Context: the agent believes that the depot is located at (DepotX,DepotY)
+ * Body: the agent tries again to move again to the location of the depot and confirm 
+ */
+@confirm_depot_handle_failure_plan
+-!confirm_depot(State) : depot(DepotX, DepotY) <- 
+   .print("Confirming depot failed. Retrying to move to depot.");
+   .wait(1500); // waits 1500ms
+   !move_to(DepotX,DepotY); // creates goal !move_to(DepotX,DepotY)
+   !confirm_depot. // creates goal !confirm_depot
+
+
+/* 
+ * Plan for reacting to the deletion of goal !handle(gold(X,Y))
+ * The plan is required in case the agent fails to handle a gold nugget
+ * Triggering event: deletion of goal !handle(gold(X,Y))
+ * Context: the agent believes that the gold nugget is located at (X,Y)
+ * Body: the agent deletes the belief that gold is located at (X,Y), and 
+ * chooses another gold nugget to handle
+ */
+ @handle_gold_handle_failure_plan
+-!handle(gold(X,Y)) : gold(X,Y) <- 
+   .print("Handling ",gold(X,Y), " failed.");
+   .abolish(gold(X,Y)); // deletes the belief gold(X,Y)
+   !!choose_gold. // creates goal !choose_gold
+
+/* 
+ * Plan for reacting to the deletion of goal !handle(gold(X,Y))
+ * The plan is required in case the agent fails to handle a gold nugget
+ * Triggering event: deletion of goal !handle(gold(X,Y))
  * Context: true (the plan is always applicable)
+ * Body: the agent chooses another gold nugget to handle
  */
-+!handle(gold(X,Y)) 
-  :  not ready_to_explore & mine_base(BaseX,BaseY)
-  <- .print("Handling ",gold(X,Y)," now.");
-
-     !move_to(X,Y);
-     pick;
-
-     //
-     !confirm_pick;
-
-     !move_to(BaseX,BaseY);
-
-     //
-     !confirm_drop; //_location
-     drop;
-     .print("Finish handling ",gold(X,Y));
-     //
-     !!choose_gold.
-
-
-// if ensure(pick/drop) failed, pursue another gold
--!handle(G) : G
-  <- .print("failed to catch gold ",G);
-     .abolish(G); // ignore source
-     !!choose_gold.
-
--!handle(G) : true
-  <- .print("failed to handle ",G,", it isn't in the BB anyway");
-     !!choose_gold.
-
-/* The next plans deal with picking up and dropping gold. */
-
-+!confirm_pick : current_position(X,Y) & gold(X,Y)
-  <- ?carrying_gold;
-     .abolish(gold(X,Y));
-     .print("Successfully picked gold at (",X,",", Y,")").
-
-+!confirm_drop : current_position(X,Y) // make this an operation that returns a boolean
-   <- 
-   base_at(X,Y,State);
-   !confirm_drop(State).
-
-+!confirm_drop(State) : State // make this an operation that returns a boolean
-   <- 
-   .print("Successfully dropped gold").
-
-+!confirm_drop(State) : mine_base(BaseX, BaseY) <- 
-   -mine_base(_,_);
-   .print("Dropping gold failed. Retrying to drop gold.");
-   .wait(2000);
-   !move_to(BaseX,BaseY);
-   !confirm_drop.
-
-
-/* The next plans encode how the agent can choose the next gold piece
- * to pursue (the closest one to its current position) or,
- * if there is no known gold location, makes the agent believe it is ready_to_explore.
- */
-+!choose_gold
-  :  not gold(_,_)
-  <- -+ready_to_explore.
-
-// Finished one gold, but others left
-// find the closest gold among the known options,
-// Keep it , describe the feature on README
-+!choose_gold
-  :  gold(_,_)
-  <- .findall(gold(X,Y),gold(X,Y),LG);
-     !calc_gold_distance(LG,LD);
-     .length(LD,LLD); LLD > 0;
-     .print("Gold distances: ",LD,LLD);
-     .min(LD,d(_,NewG));
-     .print("Next gold is ",NewG);
-     !!handle(NewG).
--!choose_gold <- -+ready_to_explore.
-
-+!calc_gold_distance([],[]).
-+!calc_gold_distance([gold(GX,GY)|R],[d(D,gold(GX,GY))|RD])
-  :  current_position(IX,IY)
-  <- jia.dist(IX,IY,GX,GY,D);
-     !calc_gold_distance(R,RD).
-+!calc_gold_distance([_|R],RD)
-  <- !calc_gold_distance(R,RD).
+@handle_gold_missing_gold_plan
+-!handle(gold(X,Y)) : true <- 
+   .print("Handling ",gold(X,Y), " failed.");
+   !!choose_gold. // creates goal !choose_gold
 
 /* Import behavior of agents that work in CArtAgO environments */
 { include("$jacamoJar/templates/common-cartago.asl") }
 
 /* Import behavior of agents that explore the mine environment */
 { include("inc/exploration.asl") }
+
+/* Import behavior of agents that choose to handle gold nuggets perceived in the past */
+{ include("inc/gold_selection.asl") }
