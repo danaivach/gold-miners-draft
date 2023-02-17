@@ -9,8 +9,9 @@ This tutorial is a simplified version of the winning implementation developed in
 Recommended editor: [Visual Studio Code](https://code.visualstudio.com/)
 
 Useful VSCode extensions: 
-- For AgentSpeak: [code-mas2j](https://marketplace.visualstudio.com/items?itemName=tkampik.code-mas2j)
-- For JaCaMo: [code-jcm](https://marketplace.visualstudio.com/items?itemName=u473t8.code-jcm)
+- For AgentSpeak syntax highlighting: [code-mas2j](https://marketplace.visualstudio.com/items?itemName=tkampik.code-mas2j)
+- For JaCaMo syntax highlighting: [code-jcm](https://marketplace.visualstudio.com/items?itemName=u473t8.code-jcm)
+- For Gradle view: [Gradle for Java](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-gradle)
 
 Optional reading material: [<u>Chapter 4.1</u> of Boissier, O., Bordini, R. H., Hubner, J., & Ricci, A. (2020). Multi-agent oriented programming: programming multi-agent systems using JaCaMo. Mit Press.](https://mitpress.ublish.com/book/multi-agent-oriented-programming-programming-multi-agent-systems-using-jacamo)
 
