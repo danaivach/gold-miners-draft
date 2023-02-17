@@ -4,7 +4,7 @@ Recently, rumours about the discovery of gold scattered around deep Carpathian w
 
 The project template we prepared for this tutorial already includes most of the code required by your team of miners, but it leaves out a few parts — just enough to give you a guided tour of some of the features of autonomous agents discussed in the first lecture.
 
-This tutorial is a simplified version of the winning implementation developed in the context of the 2nd [Multi-Agent Programming Contest](https://multiagentcontest.org/). No submission is required, but feel free to send your questions to [Danai](mailto:danai.vachtsevanou@unisg.ch).
+This tutorial is a simplified version of the [Gold Miners Tutorial](https://jacamo.sourceforge.net/tutorial/gold-miners/) which extends the winning implementation developed in the context of the 2nd [Multi-Agent Programming Contest](https://multiagentcontest.org/). No submission is required, but feel free to send your questions to [Danai](mailto:danai.vachtsevanou@unisg.ch).
 
 The tutorial project is developed with [JaCaMo](https://github.com/jacamo-lang/jacamo), a platform for programming multi-agent systems, and uses [Gradle](https://gradle.org/). We recommend you to use [Visual Studio Code](https://code.visualstudio.com/) with the following extensions:
 - For AgentSpeak syntax highlighting: [code-mas2j](https://marketplace.visualstudio.com/items?itemName=tkampik.code-mas2j)
