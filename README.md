@@ -135,7 +135,7 @@ To print a statement, you can use the following action — and note that this is
 
 The miner agent acquires beliefs throughout its lifetime, and you can inspect its belief base by visiting http://localhost:3272/ while running the project:
 
-<img src="doc/miner1-beliefs.png?raw=true" width="400">
+<img src="doc/miner-beliefs.png?raw=true" width="400">
 
 The creation of the initial belief `ready_to_explore` will trigger the plan `@ready_to_explore_plan` on lines 32-37. This plan achieves the following:
 - it computes a random position (X,Y) within the grid environment;
