@@ -74,7 +74,7 @@ We will learn more about BDI agents in Week 5. For the purpose of this tutorial,
 - _desires_ or _goals_: states of affairs the agent wishes to bring to the world;
 - _intentions_: desires that the agent is committed to achieve.
 
-In [miner.asl](src/agt/miner.asl), lines 8-12 define the _initial beliefs and goals_ of a miner agent:
+In [miner.asl](src/agt/miner.asl), lines 8-13 define the _initial beliefs and goals_ of a miner agent:
 - `ready_to_explore`: the agent believes that it is ready to explore the woods for gold;
 - `depot(0,0)`: the agent believes that the depot is located at (0,0);
 - `!start`: the agent has an initial goal to start, which is similar to the `main` method of a Java program; goals are expressed similarly to beliefs except they are preceeded by an exclamation point (`!`).
