@@ -50,7 +50,7 @@ sourceSets {
     }
 }
 
-task task_a (type: JavaExec, dependsOn: 'classes') {
+task task_1_4 (type: JavaExec, dependsOn: 'classes') {
     description 'runs the application'
     group ' JaCaMo'
     doFirst {
@@ -61,7 +61,7 @@ task task_a (type: JavaExec, dependsOn: 'classes') {
     classpath sourceSets.main.runtimeClasspath
 }
 
-task task_b (type: JavaExec, dependsOn: 'classes') {
+task task_5 (type: JavaExec, dependsOn: 'classes') {
     description 'runs the application'
     group ' JaCaMo'
     doFirst {
@@ -72,7 +72,7 @@ task task_b (type: JavaExec, dependsOn: 'classes') {
     classpath sourceSets.main.runtimeClasspath
 }
 
-task task_c (type: JavaExec, dependsOn: 'classes') {
+task task_6 (type: JavaExec, dependsOn: 'classes') {
     description 'runs the application'
     group ' JaCaMo'
     doFirst {
