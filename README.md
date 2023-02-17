@@ -163,11 +163,11 @@ Your second task is to update the `@ready_to_explore_plan` to avoid hard coding 
 // miner.asl
 
 /* 
- * Plan for reacting to the addition of the belief ready_to_explore to the agent's beliefs
+ * Plan for reacting to the addition of the belief ready_to_explore 
+ * The plan is required for exploring the woods for gold
  * Triggering event: addition of belief ready_to_explore
- * Context (before Task 2): true (the plan is always applicable)
- * Context (after Task 2): the agent has a belief about the size of the map
- * Body: the miner computes a random location (X,Y) and creates the goal to explore the route to it 
+ * Context: the agent has a belief about the size of the map
+ * Body: computes a random location (X,Y) and creates the goal to explore the route to it 
 */
 @ready_to_explore_plan
 +ready_to_explore : map_size(W,H) <-  
@@ -198,14 +198,15 @@ The `@gold_perceived_plan` should only be applicable if the agent is ready to ex
 // miner.asl
 
 /* 
- * Plan for reacting to a new belief gold(X,Y). 
+ * Plan for reacting to the addition of the belief gold(X,Y) 
+ * The plan is required for reacting to the perception of gold
  * Triggering event: addition of belief gold(X,Y)
- * Context: the miner believes that it is ready to explore, and does not believe that it is carrying gold
+ * Context: the agent believes it is ready to explore, and does not believe it is already carrying gold
+ * Body: announces the perception of a gold nugget
 */
-@gold_plan[atomic]          
-+gold(X,Y)
-  :  ready_to_explore & not carrying_gold
-  <- .print("Gold perceived: ",gold(X,Y)).
+@gold_perceived_plan[atomic]          
++gold(X,Y) : ready_to_explore & not carrying_gold <- 
+    .print("Gold perceived: ",gold(X,Y)).
 ```
 
 </details>
@@ -248,34 +249,39 @@ This will initiate the gold handling process and will eventually generate the tr
 // miner.asl
 
 /* 
- * Plan for reacting to a new belief gold(X,Y). 
+ * Plan for reacting to the addition of the belief gold(X,Y) 
+ * The plan is required for reacting to the perception of gold
  * Triggering event: addition of belief gold(X,Y)
- * Context: the miner believes that it is ready to explore, and does not believe that it is carrying gold
+ * Context: the agent believes it is ready to explore, and does not believe it is already carrying gold
+ * Body: deletes the belief that the agent is ready to explore and creates the goal to initialize the gold handling
 */
-@gold_plan[atomic]           
-+gold(X,Y) 
-   : not carrying_gold & ready_to_explore
-   <- -ready_to_explore;
-     .print("Gold perceived: ",gold(X,Y));
-     !init_handle(gold(X,Y)). // creates the goal !init_handle(gold(X,Y))
+@gold_perceived_plan[atomic]          
++gold(X,Y) : ready_to_explore & not carrying_gold <- 
+    .print("Gold perceived: ",gold(X,Y));
+    -ready_to_explore;
+    !init_handle(gold(X,Y)).
 
 /* 
- * Plan for achieving the goal !handle(gold(X,Y))
- * The agent strives to achieve the goal by a) picking the perceived gold, and b) dropping it in the base
- * Triggering event: creation of goal !handle(gold(X,Y))
- * Context: the miner believes that the mine base is in position (BaseX,BaseY) and it is not ready_to_explore
+ * Plan for reacting to creation of goal !handle(gold(X,Y))
+ * The plan is required for collecting a gold nugget and droppping it at the depot
+ * Triggering event: creation of goal !handle(Gold)
+ * Context: the agent does not believe it is ready to explore, and 
+ * it believes that the depot is located at (DepotX,DepotY)
+ * Body: 1) moves to the location of a gold nugget, 2) picks the nugget,
+ * 3) confirms that picking was successful, 4) moves to the location of the depot,
+ * 5) confirms that reaching the depot was successfully, 6) drops the nugget at the depot, 
+ * and 7) chooses another perceived gold to handle
  */
-+!handle(gold(X,Y)) 
-  :  not ready_to_explore & depot(DepotX,DepotY) // the agent does not believe it is ready to explore, and believes that the depot is located at (DepotX,DepotY) 
-  <- .print("Handling ",gold(X,Y)," now.");
-     !move_to(X,Y); // creates the goal of moving to the position of the gold
-     pick; // action that picks the gold
-     !confirm_pick; // creates the goal of confirming that the gold has been picked
-     !move_to(DepotX,DepotY); // creates the goal of moving to the position of the depot
-     !confirm_depot; // creates the goal of confirming that the depot is there
-     drop; // action that drops the gold at the base
-     .print("Finish handling ",gold(X,Y));
-     !!choose_gold. // creates the goal of handling other gold pieces
++!handle(gold(X,Y)) : not ready_to_explore & depot(DepotX,DepotY) <- 
+   .print("Handling ", gold(X,Y), "now");
+   !move_to(X,Y); // creates goal !move(X,Y)
+   pick; // action that picks a gold nugget when the agent is in the location of a gold nugget
+   !confirm_pick; // creates goal !confirm_pick
+   !move_to(DepotX,DepotY); // creates goal !move(DepotX,DepotY)
+   !confirm_depot; // creates goal !confirm_depot
+   drop; // action that drops a gold nugget when the agent is in the location of the depot
+   .print("Finish handling ",gold(X,Y));
+   !!choose_gold. // creates goal !choose_gold
 ```
 
 </details>
@@ -293,15 +299,24 @@ Your fifth task is to update the `@manage_depot_plan` in [leader.asl](src/agt/le
 
 ```
 // leader.asl
-@work_on_base_plan_1
-+!work_on_base : env_size(W,H) 
-   <- .wait(10000);
-      jia.random(X,W-1) ; // action that unifies X with a random number in [0, W-1]
-      jia.random(Y,H-1) ; // action that unifies Y with a random number in [0, H-1]
-      move_base(X,Y); // action that moves the base to position (X,Y)
-      -+mine_base(X,Y); // removes the old belief mine_base(_,_) and adds a new belief mine_base(X,Y) 
-      .send(miner, tell, mine_base(X,Y)); // sends a message to miner telling that the mine_base is in position (X,Y)
-      !work_on_base. // creates the goal !work_on_base
+
+/*
+* Plan for reacting to the creation of goal !manage_depot
+* The plan is required for managing the depot
+* Triggering event: creation of goal !manage_depot
+* Context: the agent has a belief about the size of the map
+* Body: 1) computes a random location (X,Y), 2) moves the depot to (X,Y),
+* 3) informs the miner, and 4) creates the goal to manage the depot again
+*/
+@manage_depot_plan
++!manage_depot : map_size(W,H) <- 
+   .wait(10000); // waits 10000ms
+   jia.random(X,W) ; // action that unifies X with a random number in [0, W]
+   jia.random(Y,H) ; // action that unifies Y with a random number in [0, H]
+   move_depot(X,Y); // action that moves the depot at (X,Y)
+   -+depot(X,Y); // deletes the old belief depot(_,_) and adds a new belief depot(X,Y) 
+   .send(miner, tell, depot(X,Y)); // action that tells the miner that the depot is located at (X,Y)
+   !manage_depot. // creates goal !manage_depot
 ```
 
 </details>
@@ -317,15 +332,24 @@ Your sixth task is to update the `@manage_depot_plan` in [leader.asl](src/agt/le
 
 ```
 // leader.asl
-@work_on_base_plan_1
-+!work_on_base : env_size(W,H) 
-   <- .wait(10000);
-      jia.random(X,W-1) ; // action that unifies X with a random number in [0, W-1]
-      jia.random(Y,H-1) ; // action that unifies Y with a random number in [0, H-1]
-      move_base(X,Y); // action that moves the base to position (X,Y)
-      -+mine_base(X,Y); // removes the old belief mine_base(_,_) and adds a new belief mine_base(X,Y) 
-      .boradcast(tell, mine_base(X,Y)); // broadcasts a message telling that the mine_base is in position (X,Y)
-      !work_on_base. // creates the goal !work_on_base
+
+/*
+* Plan for reacting to the creation of goal !manage_depot
+* The plan is required for managing the depot
+* Triggering event: creation of goal !manage_depot
+* Context: the agent has a belief about the size of the map
+* Body: 1) computes a random location (X,Y), 2) moves the depot to (X,Y),
+* 3) informs all agents, and 4) creates the goal to manage the depot again
+*/
+@manage_depot_plan
++!manage_depot : map_size(W,H) <- 
+   .wait(10000); // waits 10000ms
+   jia.random(X,W) ; // action that unifies X with a random number in [0, W]
+   jia.random(Y,H) ; // action that unifies Y with a random number in [0, H]
+   move_depot(X,Y); // action that moves the depot at (X,Y)
+   -+depot(X,Y); // deletes the old belief depot(_,_) and adds a new belief depot(X,Y) 
+   .broadcast(tell, depot(X,Y)); // action that tells the miner that the depot is located at (X,Y)
+   !manage_depot. // creates goal !manage_depot
 ```
 
 </details>
