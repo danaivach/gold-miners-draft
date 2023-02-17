@@ -8,7 +8,7 @@ This tutorial is a simplified version of the winning implementation developed in
 
 Recommended editor: [Visual Studio Code](https://code.visualstudio.com/)
 
-Available VSCode syntax highlighters: 
+Useful VSCode extensions: 
 - For AgentSpeak: [code-mas2j](https://marketplace.visualstudio.com/items?itemName=tkampik.code-mas2j)
 - For JaCaMo: [code-jcm](https://marketplace.visualstudio.com/items?itemName=u473t8.code-jcm)
 
@@ -45,7 +45,13 @@ You can run the project directly in VS Code or from the command line with [Gradl
 
 ### How to run in VS Code
 
-TODO: add instructions
+In VSCode, click the Gradle Side Bar elephant, and navigate through the Gradle Tasks to run one of the `jacamo` tasks:
+
+- For Tasks 1-4: `task_1_4`
+- For Task 5: `task5`
+- For Task 6: `task6`
+
+<img src="doc/vscode-gradle-view-annotated.png?raw=true" width="200">
 
 ### Command Line (MacOS/Linux/Windows)
 
@@ -247,6 +253,18 @@ In [miner.asl](src/agt/miner.asl), the goal of handling gold is created in the b
 
 ```
 // miner.asl
+
+/* 
+ * Plan for reacting to a new belief gold(X,Y). 
+ * Triggering event: addition of belief gold(X,Y)
+ * Context: the miner believes that it is ready to explore, and does not believe that it is carrying gold
+*/
+@gold_plan[atomic]           
++gold(X,Y) 
+   : not carrying_gold & ready_to_explore
+   <- -ready_to_explore;
+     .print("Gold perceived: ",gold(X,Y));
+     !init_handle(gold(X,Y)). // creates the goal !init_handle(gold(X,Y))
 
 /* 
  * Plan for achieving the goal !handle(gold(X,Y))
