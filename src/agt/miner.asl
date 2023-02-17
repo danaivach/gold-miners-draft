@@ -37,12 +37,12 @@ depot(0,0). // the agent believes that the depot is located at (0,0)
  * Triggering event: addition of belief ready_to_explore
  * Context (before Task 2): true (the plan is always applicable)
  * Context (after Task 2): the agent has a belief about the size of the map
- * Body: computes a random location (X,Y) and creates the goal to explore the route to it 
+ * Body: computes a random location and creates the goal to explore the route to it 
 */
 @ready_to_explore_plan
 +ready_to_explore : true <-  
-   jia.random(X,20) ; // action that unifies X with a random number in [0, W]
-   jia.random(Y,20) ; // action that unifies Y with a random number in [0, H]
+   jia.random(X,20) ; // action that unifies X with a random number in [0, 20]
+   jia.random(Y,20) ; // action that unifies Y with a random number in [0, 20]
    .print("I will create the goal to explore (",X,",", Y,")");
    !explore(X,Y) . // creates goal explore(X,Y)
 /********* END OF YOUR IMPLEMENTATION FOR TASK 2 *********/
