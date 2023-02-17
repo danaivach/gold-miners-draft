@@ -284,8 +284,6 @@ This will initiate the gold handling process and will eventually generate the tr
 
 The team of miners has elected a leader agent, which is responsible for keeping track of the depot coordinates and periodically moving the depot in the grid environment for security reasons. In the Mining World GUI, observe that the depot is moved to a new position every few seconds. You miner agent remains stuck carrying gold in the initial position of the depot — similar to the stuck Roomba you saw in the first lecture. This is because the initial belief of the miner agent about the depot coordinates (`depot(0,0)`) is outdated, so the agent continues to try and confirm that the known location is indeed the location of the depot (lines TBA).
 
-// TODO: if the above lines point to a plan that handles a goal failure, please make sure to add in the comments of the plan that the plan is triggered because the agent failed to achieve the goal — see also the wording for the goal deletion triggering event above ;-)
-
 Thankfully, agents can communicate with one other to share knowledge about the environment. In AgentSpeack, plan bodies can contain _communication actions_, which allow agents to send messages. For example, the miner agent can perform the action `.send(tell, leader, sunny)` to tell the leader that it is `sunny`. The leader will then acquire a new `sunny` belief — and will also keep note that the miner agent is the source of this new belief.
 
 Your fifth task is to update the `@manage_depot_plan` in [leader.asl](src/agt/leader.asl) such that the leader agent tells the miner agent the new location of the depot every time the leader moves the depot.
