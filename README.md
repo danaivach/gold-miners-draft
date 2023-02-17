@@ -282,7 +282,7 @@ In [miner.asl](src/agt/miner.asl), the goal of handling gold is created in the b
 
 ### Task 5 - Social Ability
 
-The team of miners has elected a leader agent, that is responsible for keeping track of the depot coordinates, and periodically moving the depot in the grid environment for safety reasons. In the Mining World GUI, observe that the depot is moved to a new position every few seconds, and the miner agent remains stuck carrying gold in the initial position of the depot. This is because the initial belief of the miner agent about the depot coordinates (`depot(0,0)`) is outdated, and the agent continues to strive confirming that it is in the location of the depot without success (lines TBA). 
+The team of miners has elected a leader agent, that is responsible for keeping track of the depot coordinates, and periodically moving the depot in the grid environment for safety reasons. In the Mining World GUI, observe that the depot is moved to a new position every few seconds, and the miner agent remains stuck carrying gold in the initial position of the depot (just like the stuck Roomba from the lecture). This is because the initial belief of the miner agent about the depot coordinates (`depot(0,0)`) is outdated, and the agent continues to strive confirming that it is in the location of the depot without success (lines TBA). 
     
 Thankfully, agents can communicate with each other to exchange messages and share knowledge about the environment. In AgentSpeack, plan bodies can contain _communication actions_ which enable agents to communicate their beliefs and plans to each other. For example, an agent can perform the action `.send(tell, leader, sunny)` to tell the leader that it is `sunny`. 
     
