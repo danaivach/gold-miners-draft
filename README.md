@@ -166,7 +166,7 @@ Your second task is to update the `@ready_to_explore_plan` to avoid hard coding 
 // miner.asl
 
 /* 
- * Plan for reacting to addition of the belief ready_to_explore to the agent's belief base
+ * Plan for reacting to the addition of the belief ready_to_explore to the agent's belief base
  * Triggering event: addition of belief ready_to_explore
  * Context (before Task 2): true (the plan is always applicable)
  * Context (after Task 2): the agent has a belief about the size of the map
@@ -174,10 +174,10 @@ Your second task is to update the `@ready_to_explore_plan` to avoid hard coding 
 */
 @ready_to_explore_plan
 +ready_to_explore : map_size(W,H) <-  
-      jia.random(X,W) ; // action that unifies X with a random number in [0, W]
-      jia.random(Y,H) ; // action that unifies Y with a random number in [0, H]
-      .print("I will create the goal to explore (",X,",", Y,")");
-      !explore(X,Y) . // creates goal explore(X,Y)
+   jia.random(X,W) ; // action that unifies X with a random number in [0, W]
+   jia.random(Y,H) ; // action that unifies Y with a random number in [0, H]
+   .print("I will create the goal to explore (",X,",", Y,")");
+   !explore(X,Y) . // creates goal explore(X,Y)
 ```
 
 </details>
