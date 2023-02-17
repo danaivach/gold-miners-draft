@@ -4,10 +4,19 @@ Recently, rumours about the discovery of gold scattered around deep Carpathian w
 
 The tutorial already includes most of the code required by your team of miners. It only leaves out a few parts — just enough to give you a guided tour of some of the features of autonomous agents discussed during the lecture.
 
-This tutorial is a simplified version of the winning implementation developed in the context of the 2nd [Multi-Agent Programming (CLIMA VII) Contest](https://multiagentcontest.org/).
+This tutorial is a simplified version of the winning implementation developed in the context of the 2nd [Multi-Agent Programming (CLIMA VII) Contest](https://multiagentcontest.org/). No submission is required, but feel free to [send me](mailto:danai.vachtsevanou@unisg.ch) your questions.
+
+Recommended editor: [Visual Studio Code](https://code.visualstudio.com/)
+
+Useful VSCode extensions: 
+- For AgentSpeak syntax highlighting: [code-mas2j](https://marketplace.visualstudio.com/items?itemName=tkampik.code-mas2j)
+- For JaCaMo syntax highlighting: [code-jcm](https://marketplace.visualstudio.com/items?itemName=u473t8.code-jcm)
+- For Gradle view: [Gradle for Java](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-gradle)
+
+Optional reading material: [<u>Chapter 4.1</u> of Boissier, O., Bordini, R. H., Hubner, J., & Ricci, A. (2020). Multi-agent oriented programming: programming multi-agent systems using JaCaMo. Mit Press.](https://mitpress.ublish.com/book/multi-agent-oriented-programming-programming-multi-agent-systems-using-jacamo)
 
 ## Table of Contents
--   [Project structure]()
+-   [Project structure](#project-structure)
 -   [How to run the project](#how-to-run-the-project)
 -   [Gold Miners Tutorial](#gold-miners-tutorial)
     -  [Task 1 - Hello World](#task-1---hello-world)
@@ -16,43 +25,44 @@ This tutorial is a simplified version of the winning implementation developed in
     -  [Task 4 - Proactive behavior](#task-4---proactive-behavior)
     -  [Task 5 - Social ability](#task-5---social-ability)
     -  [Task 6 - Towards Multi-Agent Systems](#task-6---towards-multi-agent-systems)
+
+## Project structure
+```
+├── src
+│   ├── agt
+│   │   ├── miner.asl // agent program of miner agents
+│   │   ├── leader.asl // agent program of the leader agent
+│   │   └── inc
+│   │       └── exploration.asl // program that supports miner agents in exploring the grid environment
+│   └── env
+├── mas_1_4.jcm // the configuration file of the JaCaMo application for tasks 1-4
+├── mas_5.jcm // the configuration file of the JaCaMo application for task 5
+└── mas_6.jcm // the configuration file of the JaCaMo application for task 6
+```
  
 ## How to run the project
 
-You can run the project directly in VS Code or from the command line with [Gradle 7.4](https://gradle.org/).
+You can run the project directly in VS Code or from the command line with [Gradle 7.4](https://gradle.org/). The available Gradle tasks are:
+
+- For Tasks 1-4: `task_1_4`
+- For Task 5: `task5`
+- For Task 6: `task6`
 
 ### How to run in VS Code
 
-TODO: add instructions
+In VSCode, click the Gradle Side Bar elephant, and navigate through the Gradle Tasks to run one of the `jacamo` tasks:
 
-### Command Line (MacOS/Linux)
+<img src="doc/vscode-gradle-view-annotated.png?raw=true" width="200">
 
-For Tasks 1-4:
+### Command Line (MacOS/Linux/Windows)
+
+- MacOS and Linux: Use the command `./gradlew` to run one of the Gradle Tasks, e.g.:
 ```shell
 ./gradlew task_1_4
 ```
-For Task 5:
-```shell
-./gradlew task_6
-```
-For Task 6: 
-```shell
-./gradlew task_6
-```
-
-### Command Line (Windows)
-
-For Tasks 1-4:
+- Windows: replace Use the command `gradlew.bat` to run one of the Gradle Tasks, e.g.:
 ```shell
 gradlew.bat task_1_4
-```
-For Task 5:
-```shell
-gradlew.bat task_5
-```
-For Task 6: 
-```shell
-gradlew.bat task_6
 ```
 
 ## Gold Miners Tutorial
@@ -239,6 +249,18 @@ In [miner.asl](src/agt/miner.asl), the goal of handling gold is created in the b
 // miner.asl
 
 /* 
+ * Plan for reacting to a new belief gold(X,Y). 
+ * Triggering event: addition of belief gold(X,Y)
+ * Context: the miner believes that it is ready to explore, and does not believe that it is carrying gold
+*/
+@gold_plan[atomic]           
++gold(X,Y) 
+   : not carrying_gold & ready_to_explore
+   <- -ready_to_explore;
+     .print("Gold perceived: ",gold(X,Y));
+     !init_handle(gold(X,Y)). // creates the goal !init_handle(gold(X,Y))
+
+/* 
  * Plan for achieving the goal !handle(gold(X,Y))
  * The agent strives to achieve the goal by a) picking the perceived gold, and b) dropping it in the base
  * Triggering event: creation of goal !handle(gold(X,Y))
@@ -261,7 +283,7 @@ In [miner.asl](src/agt/miner.asl), the goal of handling gold is created in the b
 
 ### Task 5 - Social Ability
 
-The team of miners has elected a leader agent, that is responsible for keeping track of the depot coordinates, and periodically moving the depot in the grid environment for safety reasons. In the Mining World GUI, observe that the depot is moved to a new position every few seconds, and the miner agent remains stuck carrying gold in the initial position of the depot. This is because the initial belief of the miner agent about the depot coordinates (`depot(0,0)`) is outdated, and the agent continues to strive confirming that it is in the location of the depot without success (lines TBA). 
+The team of miners has elected a leader agent, that is responsible for keeping track of the depot coordinates, and periodically moving the depot in the grid environment for safety reasons. In the Mining World GUI, observe that the depot is moved to a new position every few seconds, and the miner agent remains stuck carrying gold in the initial position of the depot (just like the stuck Roomba from the lecture). This is because the initial belief of the miner agent about the depot coordinates (`depot(0,0)`) is outdated, and the agent continues to strive confirming that it is in the location of the depot without success (lines TBA). 
     
 Thankfully, agents can communicate with each other to exchange messages and share knowledge about the environment. In AgentSpeack, plan bodies can contain _communication actions_ which enable agents to communicate their beliefs and plans to each other. For example, an agent can perform the action `.send(tell, leader, sunny)` to tell the leader that it is `sunny`. 
     
