@@ -23,6 +23,7 @@ Optional reading material for a brief introduction to agent-oriented programming
     -  [Task 4 - Proactive behavior](#task-4---proactive-behavior)
     -  [Task 5 - Social behavior](#task-5---social-behavior)
     -  [Task 6 - Towards Multi-Agent Systems](#task-6---towards-multi-agent-systems)
+-   [Concluding remarks](#concluding-remarks)
 
 ## Project structure
 ```
@@ -328,5 +329,10 @@ Your sixth task is to update the `@manage_depot_plan` in [leader.asl](src/agt/le
 
 </details>
 
-// TODO: add a nice closing statement to wrap it off, something about the narrative :-) Ex: "Now with your team of miners working at full force, you lay back, relax, and (...)"
+## Concluding remarks
+Now with your team of miners working at full force, you lay back, relax, and enjoy the view of the Carpathian woods. But before you go off relaxing, it is worth to reflect on a question:
+
+| :bulb: Your agents are able to achieve their goals in a flexible manner by interleaving proactive, reactive, and social behavior. If you reflect on your agents and their behavior, can you pinpoint concrete examples of such interleaving of behavior?   |
+| :-- |
+
 
