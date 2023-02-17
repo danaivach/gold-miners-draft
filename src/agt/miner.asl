@@ -37,7 +37,7 @@ depot(0,0). // the agent believes that the depot is located at (0,0)
  * Triggering event: addition of belief ready_to_explore
  * Context (before Task 2): true (the plan is always applicable)
  * Context (after Task 2): the agent has a belief about the size of the map
- * Body: the agent computes a random location (X,Y) and creates the goal to explore the route to it 
+ * Body: computes a random location (X,Y) and creates the goal to explore the route to it 
 */
 @ready_to_explore_plan
 +ready_to_explore : map_size(W,H) <-  
@@ -107,7 +107,7 @@ depot(0,0). // the agent believes that the depot is located at (0,0)
  * Triggering event: creation of goal handle(Gold)
  * Context: the agent does not believe it is ready to explore, and 
  * it believes that the depot is location at (DepotX,DepotY)
- * Body: the agent 1) moves to the location of a gold nugget, 2) picks the nugget,
+ * Body: 1) moves to the location of a gold nugget, 2) picks the nugget,
  * 3) confirms that picking was successful, 4) moves to the location of the depot,
  * 5) confirms that it moved to the location of the depot successfully, and
  * 6) drops the nugget at the depot, and 7) chooses another perceived gold to handle
@@ -130,7 +130,7 @@ depot(0,0). // the agent believes that the depot is located at (0,0)
  * The plan is required for moving to the location (X,Y)
  * Triggering event: creation of goal !move_to(X,Y)
  * Context: the agent believes it is located at (X,Y)
- * Body: the agent announces that it has reached the location (X,Y)
+ * Body: announces that it has reached the location (X,Y)
  */
  @move_to_plan
 +!move_to(X,Y) : current_position(X,Y) <- 
@@ -141,7 +141,7 @@ depot(0,0). // the agent believes that the depot is located at (0,0)
  * The plan is required for confirming that it is in the position of a gold nugget and it is carrying the gold nugget
  * Triggering event: creation of goal !move_to(X,Y)
  * Context: the agent does not believe that it is located at (X,Y)
- * Body: the agent creates the goal to make 1 more step towards (X,Y), and creates goal !move_to(X,Y)
+ * Body: creates the goal to make 1 more step towards (X,Y), and creates goal !move_to(X,Y)
  */
 @move_to_different_location_plan
 +!move_to(X,Y) : not current_position(X,Y) <- 
@@ -154,7 +154,7 @@ depot(0,0). // the agent believes that the depot is located at (0,0)
  * it is carrying a nugget
  * Triggering event: creation of goal !confirm_pick
  * Context: the agent believes it is located at the location (X,Y) of a gold nugget
- * Body: the agent checks if it is carrying gold, and deletes the belief that gold is located at (X,Y)
+ * Body: checks if the agent is carrying gold, and deletes the belief that gold is located at (X,Y)
  */
  @confirm_pick_plan
 +!confirm_pick : current_position(X,Y) & gold(X,Y) <- 
@@ -167,7 +167,7 @@ depot(0,0). // the agent believes that the depot is located at (0,0)
  * The plan is required for confirming that the agent is at the location of the depot
  * Triggering event: creation of goal !confirm_depot
  * Context: the agent believes it is at the location (X,Y) 
- * Body: the agent checks it is at the location of the depot, and creates goal !confirm_depot(State) 
+ * Body: checks if the agent is at the location of the depot, and creates goal !confirm_depot(State) 
  */
 @confirm_depot_plan
 +!confirm_depot : current_position(X,Y) <- 
@@ -179,7 +179,7 @@ depot(0,0). // the agent believes that the depot is located at (0,0)
  * The plan is required for confirming that the agent is at the location of the depot
  * Triggering event: creation of goal !confirm_depot(State)
  * Context: the agent believes it is at the location (X,Y) of the depot
- * Body: the agent announces that is has successfully dropped the gold nugget
+ * Body: announces that is has successfully reached the depot
  */
 @confirm_depot_right_location_plan
 +!confirm_depot(State) : State <- 
@@ -191,7 +191,7 @@ depot(0,0). // the agent believes that the depot is located at (0,0)
  * if previously it failed to confirm this
  * Triggering event: deletion of goal !confirm_depot(State)
  * Context: the agent believes that the depot is located at (DepotX,DepotY)
- * Body: the agent tries again to move again to the location of the depot and confirm 
+ * Body: tries to move again to the location of the depot and confirm 
  */
 @confirm_depot_handle_failure_plan
 -!confirm_depot(State) : depot(DepotX, DepotY) <- 
@@ -206,7 +206,7 @@ depot(0,0). // the agent believes that the depot is located at (0,0)
  * The plan is required in case the agent fails to handle a gold nugget
  * Triggering event: deletion of goal !handle(gold(X,Y))
  * Context: the agent believes that the gold nugget is located at (X,Y)
- * Body: the agent deletes the belief that gold is located at (X,Y), and 
+ * Body: deletes the belief that gold is located at (X,Y), and 
  * chooses another gold nugget to handle
  */
  @handle_gold_handle_failure_plan
@@ -220,7 +220,7 @@ depot(0,0). // the agent believes that the depot is located at (0,0)
  * The plan is required in case the agent fails to handle a gold nugget
  * Triggering event: deletion of goal !handle(gold(X,Y))
  * Context: true (the plan is always applicable)
- * Body: the agent chooses another gold nugget to handle
+ * Body: chooses another gold nugget to handle
  */
 @handle_gold_missing_gold_plan
 -!handle(gold(X,Y)) : true <- 
