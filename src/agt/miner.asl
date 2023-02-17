@@ -32,7 +32,7 @@ depot(0,0). // the agent believes that the depot is located at (0,0)
 
 /********* START OF YOUR IMPLEMENTATION FOR TASK 2 *********/
 /* 
- * Plan for reacting to the addition of the belief ready_to_explore to the agent's belief base
+ * Plan for reacting to the addition of the belief ready_to_explore 
  * The plan is required for exploring the woods for gold
  * Triggering event: addition of belief ready_to_explore
  * Context (before Task 2): true (the plan is always applicable)
@@ -48,7 +48,7 @@ depot(0,0). // the agent believes that the depot is located at (0,0)
 /********* END OF YOUR IMPLEMENTATION FOR TASK 2 *********/
 
 /* 
- * Plan for reacting to the addition of the belief ready_to_explore to the agent's belief base
+ * Plan for reacting to the addition of the belief ready_to_explore 
  * The plan is required in case the agent does not have a belief about the size of the map after you implement Task 2 
  * Triggering event: addition of belief ready_to_explore
  * Context : true (the plan is always applicable)
@@ -61,7 +61,7 @@ depot(0,0). // the agent believes that the depot is located at (0,0)
 
 /********* START OF YOUR IMPLEMENTATION FOR TASK 3 *********/
 /* 
- * Plan for reacting to the addition of the belief gold(X,Y) to the agent's belief base
+ * Plan for reacting to the addition of the belief gold(X,Y) 
  * The plan is required for reacting to the perception of gold
  * Triggering event: addition of belief gold(X,Y)
  * Context : the agent believes it is ready to explore, and does not believe it is already carrying gold
@@ -114,15 +114,16 @@ depot(0,0). // the agent believes that the depot is located at (0,0)
  */
 +!handle(gold(X,Y)) : not ready_to_explore & depot(DepotX,DepotY) <- 
    .print("Handling ", gold(X,Y), "now");
+   /********* START OF YOUR IMPLEMENTATION FOR TASK 4 *********/
    !move_to(X,Y); // creates goal !move(X,Y)
    pick; // action that picks a gold nugget when the agent is in the location of a gold nugget
    !confirm_pick; // creates goal !confirm_pick
    !move_to(DepotX,DepotY); // creates goal !move(DepotX,DepotY)
    !confirm_depot; // creates goal !confirm_depot
    drop; // action that drops a gold nugget when the agent is in the location of the depot
+   /********* END OF YOUR IMPLEMENTATION FOR TASK 4 *********/
    .print("Finish handling ",gold(X,Y));
    !!choose_gold. // creates goal !choose_gold
-/********* END OF YOUR IMPLEMENTATION FOR TASK 4 *********/
 
 /* 
  * Plan for reacting to the creation of goal !move_to(X,Y)
