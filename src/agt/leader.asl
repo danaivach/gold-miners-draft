@@ -22,25 +22,25 @@ depot(0,0). // the agent believes that the depot is located at (0,0)
 +!start : true <- 
    !manage_depot. // creation of goal !manage_depot
 
-/********* START OF YOUR IMPLEMENTATION FOR TASK 5 & 6 *********/
+/********* START OF YOUR IMPLEMENTATION FOR TASKS 5 & 6 *********/
 /*
 * Plan for reacting to the creation of goal !manage_depot
 * The plan is required for managing the depot
 * Triggering event: creation of goal !manage_depot
 * Context: the agent has a belief about the size of the map
-* Body: computes a random location (X,Y), moves the depot to (X,Y),
-* informs the miner, and creates the goal to manage the depot again
+* Body: 1) computes a random location (X,Y), 2) moves the depot to (X,Y),
+* 3) informs the miner, and 4) creates the goal to manage the depot again
 */
 @manage_depot_plan
 +!manage_depot : map_size(W,H) <- 
    .wait(10000); // waits 10000ms
    jia.random(X,W) ; // action that unifies X with a random number in [0, W]
    jia.random(Y,H) ; // action that unifies Y with a random number in [0, H]
-   move_base(X,Y); // action that moves the depot at (X,Y)
+   move_depot(X,Y); // action that moves the depot at (X,Y)
    -+depot(X,Y); // deletes the old belief depot(_,_) and adds a new belief depot(X,Y) 
-   .send(miner, tell, depot(X,Y)); // action that tells the miner that the depot is located at (X,Y)
+   .broadcast(tell, depot(X,Y)); // action that tells the miner that the depot is located at (X,Y)
    !manage_depot. // creates goal !manage_depot
-/********* START OF YOUR IMPLEMENTATION FOR TASK 5 & 6 *********/
+/********* START OF YOUR IMPLEMENTATION FOR TASKS 5 & 6 *********/
 
 /*
 * Plan for reacting to the creation of goal !manage_depot

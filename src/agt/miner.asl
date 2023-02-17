@@ -52,22 +52,22 @@ depot(0,0). // the agent believes that the depot is located at (0,0)
  * The plan is required in case the agent does not have a belief about the size of the map after you implement Task 2 
  * Triggering event: addition of belief ready_to_explore
  * Context : true (the plan is always applicable)
- * Body: waits and removes the old belief ready_to_explore and adds a new belief ready_to_explore
+ * Body: waits and deletes the old belief ready_to_explore and adds a new belief ready_to_explore
 */
 @ready_to_explore_unknown_map_plan
 +ready_to_explore  : true <- 
    .wait(100); // waits 100ms
-   -+ready_to_explore. // removes the old belief ready_to_explore and adds a new belief ready_to_explore
+   -+ready_to_explore. // deletes the old belief ready_to_explore and adds a new belief ready_to_explore
 
 /********* START OF YOUR IMPLEMENTATION FOR TASK 3 *********/
 /* 
  * Plan for reacting to the addition of the belief gold(X,Y) 
  * The plan is required for reacting to the perception of gold
  * Triggering event: addition of belief gold(X,Y)
- * Context : the agent believes it is ready to explore, and does not believe it is already carrying gold
- * Body: waits and removes the old belief ready_to_explore and adds a new belief ready_to_explore
+ * Context: the agent believes it is ready to explore, and does not believe it is already carrying gold
+ * Body: deletes the belief that the agent is ready to explore and creates the goal to initialize the gold handling
 */
-@gold_plan[atomic]           
+@gold_perceived_plan[atomic]           
 +gold(X,Y) : ready_to_explore & not carrying_gold <- 
    .print("Gold perceived: ",gold(X,Y));
    -ready_to_explore;
@@ -104,13 +104,13 @@ depot(0,0). // the agent believes that the depot is located at (0,0)
 /* 
  * Plan for reacting to creation of goal !handle(gold(X,Y))
  * The plan is required for collecting a gold nugget and droppping it at the depot
- * Triggering event: creation of goal handle(Gold)
+ * Triggering event: creation of goal !handle(Gold)
  * Context: the agent does not believe it is ready to explore, and 
- * it believes that the depot is location at (DepotX,DepotY)
+ * it believes that the depot is located at (DepotX,DepotY)
  * Body: 1) moves to the location of a gold nugget, 2) picks the nugget,
  * 3) confirms that picking was successful, 4) moves to the location of the depot,
- * 5) confirms that it moved to the location of the depot successfully, and
- * 6) drops the nugget at the depot, and 7) chooses another perceived gold to handle
+ * 5) confirms that reaching the depot was successfully, 6) drops the nugget at the depot, 
+ * and 7) chooses another perceived gold to handle
  */
 +!handle(gold(X,Y)) : not ready_to_explore & depot(DepotX,DepotY) <- 
    .print("Handling ", gold(X,Y), "now");

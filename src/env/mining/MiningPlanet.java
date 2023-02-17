@@ -68,7 +68,7 @@ public class MiningPlanet extends Artifact {
         updateAgPercept();
     }
 
-    @OPERATION void move_base(int x, int y) {
+    @OPERATION void move_depot(int x, int y) {
         if (sleep > 0) await_time(sleep);
         model.moveDepot(x,y);
         updateAgPercept();
