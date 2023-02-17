@@ -21,7 +21,7 @@ Optional reading material for a brief introduction to agent-oriented programming
     -  [Task 2 - Beliefs about the world](#task-2---beliefs-about-the-world)
     -  [Task 3 - Reactive behavior](#task-3---reactive-behavior)
     -  [Task 4 - Proactive behavior](#task-4---proactive-behavior)
-    -  [Task 5 - Social ability](#task-5---social-ability)
+    -  [Task 5 - Social behavior](#task-5---social-behavior)
     -  [Task 6 - Towards Multi-Agent Systems](#task-6---towards-multi-agent-systems)
 
 ## Project structure
@@ -275,7 +275,7 @@ In [miner.asl](src/agt/miner.asl), the goal of handling gold is created in the b
 
 </details>
 
-### Task 5 - Social Ability
+### Task 5 - Social behavior
 
 The team of miners has elected a leader agent, which is responsible for keeping track of the depot coordinates and periodically moving the depot in the grid environment for security reasons. In the Mining World GUI, observe that the depot is moved to a new position every few seconds. You miner agent remains stuck carrying gold in the initial position of the depot — similar to the stuck Roomba you saw in the first lecture. This is because the initial belief of the miner agent about the depot coordinates (`depot(0,0)`) is outdated, so the agent continues to try and confirm that the known location is indeed the location of the depot (lines TBA).
 
